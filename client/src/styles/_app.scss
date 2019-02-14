@@ -1,0 +1,42 @@
+@import 'fonts';
+@import '~nes.css/scss/nes';
+
+html, body {
+  cursor: url('assets/cursor.png'), auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  cursor: url('assets/cursor-click.png'), auto;
+}
+
+#app {
+  font-family: 'Press Start 2P', sans-serif;
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 20px;
+}
+
+header {
+  border-bottom-style: dotted;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+footer {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.zava-icon {
+  background-color: blue;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 70px;
+  padding: 20px 30px 10px 40px;
+}

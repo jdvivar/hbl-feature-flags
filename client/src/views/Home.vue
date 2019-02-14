@@ -1,31 +1,29 @@
 <template>
   <div>
-    <h1>home view</h1>
-    <HelloWorld></HelloWorld>
-
-    <div class="ff-list" v-for="flag in flags" :key="flag.id">
-      <div class="ff-item">
-        {{ flag }}
-      </div>
+    <div class="nes-field">
+      <input type="text" id="name_field" class="nes-input" placeholder="Search">
+    </div>
+    <div class="flags">
+      <Flag v-for="flag in flags" :key="flag.id" :flag="flag"></Flag>
     </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
+import Flag from '@/components/Flag'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
 
 export default {
   name: 'home',
-  data: function() {
+  data: function () {
     return {
       flags: {}
     }
   },
   components: {
-    HelloWorld
+    Flag
   },
-  beforeRouteEnter(to, from, next) {
+  beforeRouteEnter (to, from, next) {
     next(vm => {
       FeatureFlagsApi.get().then(answer => {
         vm.flags = answer
@@ -34,3 +32,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+
+</style>
