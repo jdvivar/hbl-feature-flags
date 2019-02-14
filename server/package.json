@@ -1,0 +1,14 @@
+{
+  "name": "hbl-feature-flags-server",
+  "version": "1.0.0",
+  "description": "Mock server for hbl-feature-flags-client",
+  "scripts": {
+    "serve": "json-server --watch $npm_package_db"
+  },
+  "db": "feature-flags-db.json",
+  "author": "Daniel Vivar <mail@danielvivar.com>",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.14.2"
+  }
+}

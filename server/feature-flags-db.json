@@ -1,0 +1,52 @@
+{
+  "flags": [
+    {
+      "title": "Title for flag 1",
+      "id": 1,
+      "status": false,
+      "tags": [
+        "tag-1",
+        "tag-2"
+      ]
+    },
+    {
+      "title": "Title for flag 2",
+      "id": 2,
+      "status": true,
+      "tags": [
+        "tag-3",
+        "tag-1"
+      ]
+    },
+    {
+      "title": "Title for flag 3",
+      "id": 3,
+      "status": false,
+      "tags": []
+    },
+    {
+      "title": "Title for flag 4",
+      "id": 4,
+      "status": true,
+      "tags": [
+        "tag-3"
+      ]
+    },
+    {
+      "title": "Title for flag 5",
+      "id": 5,
+      "status": true,
+      "tags": [
+        "tag-2"
+      ]
+    },
+    {
+      "title": "Title for flag 6",
+      "id": 6,
+      "status": false,
+      "tags": [
+        "tag-1"
+      ]
+    }
+  ]
+}
