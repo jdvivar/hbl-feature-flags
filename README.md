@@ -3,4 +3,4 @@
 This repo is composed of:
 
 #### [Client](/client)
-#### [Sever](/server)
+#### [Server](/server)
