@@ -79,7 +79,7 @@ export default {
   computed: {
     filteredFlags: function () {
       return this.flags.filter(flag =>
-        flag.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        flag.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
         flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase()) ||
         flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
       )

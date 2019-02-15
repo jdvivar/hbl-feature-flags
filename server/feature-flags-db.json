@@ -1,8 +1,9 @@
 {
   "flags": [
     {
-      "title": "Title for flag 1",
       "id": 1,
+      "name": "Very very very loooooong name",
+      "description": "Have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat touch my tail, i shred your hand purrrr howl on top of tall thing for sun bathe, for have my breakfast spaghetti yarn have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat. Rub against owner because nose is wet purr when being pet. Stare at ceiling pelt around the house and up and down stairs chasing phantoms for sniff catnip and act crazy, so i cry and cry and cry unless you pet me, and then maybe i cry just for fun warm up laptop with butt lick butt fart rainbows until owner yells pee in litter box hiss at cats.",
       "status": false,
       "tags": [
         "tag-1",
@@ -10,42 +11,41 @@
       ]
     },
     {
-      "title": "Title for flag 2",
       "id": 2,
+      "name": "name for flag 2",
+      "description": "Normal desription with just a few words",
       "status": true,
       "tags": [
         "tag-3",
-        "tag-1"
+        "tag-1",
+        "many",
+        "tags",
+        "and a very looooooong tag"
       ]
     },
     {
-      "title": "Title for flag 3",
       "id": 3,
+      "name": "name for flag 3",
+      "description": "",
       "status": false,
       "tags": []
     },
     {
-      "title": "Title for flag 4",
       "id": 4,
+      "name": "name for flag 4",
+      "description": "Meow to be let in meow kitten is playing with dead mouse meoooow fooled again thinking the dog likes me russian blue. ",
       "status": true,
       "tags": [
         "tag-3"
       ]
     },
     {
-      "title": "Title for flag 5",
       "id": 5,
+      "name": "name for flag 5",
+      "description": "Hola",
       "status": true,
       "tags": [
         "tag-2"
-      ]
-    },
-    {
-      "title": "Title for flag 6",
-      "id": 6,
-      "status": false,
-      "tags": [
-        "tag-1"
       ]
     }
   ]
