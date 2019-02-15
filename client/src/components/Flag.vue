@@ -11,7 +11,7 @@
     </div>
     <details class="description" v-if="flag.description">
       <summary class="description-header">Description</summary>
-      <div class="description-content">
+      <div class="nes-balloon">
         {{ flag.description }}
       </div>
     </details>
@@ -87,6 +87,7 @@ export default {
   button {
     margin-bottom: 10px;
     margin-right: 10px;
+    font-size: 12px;
   }
 
   .add-tag.hide {
@@ -98,7 +99,7 @@ export default {
   margin: 20px 0;
 
   .description-header {
-    font-size: 20px;
+    font-weight: 700;
     outline: none;
     margin-bottom: 20px;
   }

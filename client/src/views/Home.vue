@@ -13,7 +13,7 @@
       <router-link to="/">
         <button
             type="button"
-            class="nes-btn is-error">
+            class="nes-btn is-error logout">
           Log out
         </button>
       </router-link>
@@ -126,8 +126,8 @@ export default {
   position: relative;
 
   .nes-input {
-    width: calc(100% - 180px);
-    margin-right: 32px;
+    width: calc(100% - 168px);
+    margin-right: 20px;
 
     &:disabled {
       opacity: .2;
@@ -139,5 +139,13 @@ export default {
     top: 15px;
     right: 190px;
   }
+
+  .logout {
+    font-size: 14px;
+    position: relative;
+    top: -3px;
+    width: 136px;
+  }
 }
+
 </style>
