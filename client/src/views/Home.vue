@@ -1,7 +1,12 @@
 <template>
   <div>
     <div id="tools">
-      <input :disabled="error" type="text" id="name_field" class="nes-input" placeholder="Search">
+      <input
+          :disabled="error"
+          type="text"
+          class="nes-input"
+          placeholder="Search"
+          v-model="search">
       <router-link to="/">
         <button
             type="button"
@@ -26,7 +31,21 @@
       </button>
     </div>
     <div class="flags">
-      <Flag v-for="flag in flags" :key="flag.id" :flag="flag"></Flag>
+      <Flag v-for="flag in filteredFlags" :key="flag.id" :flag="flag"></Flag>
+      <div v-if="flags && filteredFlags.length === 0" class="error" >
+        <div class="message -left">
+          <i class="nes-octocat"></i>
+          <div class="nes-balloon from-left">
+            <p>I couldn't find any flag with "{{ search }}"</p>
+          </div>
+        </div>
+        <div class="message -right">
+          <div class="nes-balloon from-right">
+            <p>Mamma mia, type something different!</p>
+          </div>
+          <i class="nes-mario bounce"></i>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,8 +58,18 @@ export default {
   name: 'home',
   data: function () {
     return {
-      flags: {},
-      error: false
+      flags: [],
+      error: false,
+      search: ''
+    }
+  },
+  computed: {
+    filteredFlags: function () {
+      return this.flags.filter(flag =>
+        flag.title.toLowerCase().includes(this.search.toLowerCase())
+        || flag.id.toString().toLowerCase().includes(this.search.toLowerCase())
+        || flag.tags.toString().toLowerCase().includes(this.search.toLowerCase())
+      )
     }
   },
   components: {
@@ -65,6 +94,10 @@ export default {
 .error {
   text-align: center;
   margin: 200px 0;
+
+  .message {
+    margin-bottom: 50px;
+  }
 }
 
 .nes-balloon {
