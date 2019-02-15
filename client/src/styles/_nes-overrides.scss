@@ -20,3 +20,11 @@
 .nes-icon.google::before {
   color: transparent !important;
 }
+
+.nes-input::placeholder {
+  opacity: .3;
+}
+
+button.nes-btn.is-primary {
+  background-color: $zava-blue;
+}

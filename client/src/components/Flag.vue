@@ -14,6 +14,7 @@
           v-for="tag in flag.tags"
           @click="$emit('tagClicked', tag)"
           type="button"
+          :key="`${flag.id}-${tag}`"
           class="nes-btn is-primary">
         {{ tag }}
       </button>
@@ -44,7 +45,7 @@ export default {
 
 .title {
   position: absolute;
-  top: -5px;
+  top: -15px;
   background-color: white;
   padding: 0 10px;
   font-size: 20px;

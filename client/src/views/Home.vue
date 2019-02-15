@@ -5,8 +5,11 @@
           :disabled="error"
           type="text"
           class="nes-input"
-          placeholder="Search"
+          placeholder="Filterr my frriend..."
           v-model="searchText">
+      <a @click="search('')" v-show="searchText">
+        <i class="nes-icon close is-small"></i>
+      </a>
       <router-link to="/">
         <button
             type="button"
@@ -69,16 +72,16 @@ export default {
     }
   },
   methods: {
-    search: function (tag) {
-      this.searchText = tag
+    search: function (what) {
+      this.searchText = what
     }
   },
   computed: {
     filteredFlags: function () {
       return this.flags.filter(flag =>
-        flag.title.toLowerCase().includes(this.searchText.toLowerCase())
-        || flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase())
-        || flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
+        flag.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase()) ||
+        flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
       )
     }
   },
@@ -101,6 +104,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .error {
   text-align: center;
   margin: 200px 0;
@@ -119,6 +123,8 @@ export default {
 }
 
 #tools {
+  position: relative;
+
   .nes-input {
     width: calc(100% - 180px);
     margin-right: 32px;
@@ -126,6 +132,12 @@ export default {
     &:disabled {
       opacity: .2;
     }
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 190px;
   }
 }
 </style>

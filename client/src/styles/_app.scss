@@ -5,14 +5,14 @@
 @import 'animations';
 
 html, body {
-  cursor: url('assets/cursor.png'), auto;
+  cursor: $cursor-hand;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 a {
-  cursor: url('assets/cursor-click.png'), auto;
+  cursor: $cursor-hand-pointer;
 }
 
 #app {
