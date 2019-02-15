@@ -9,8 +9,14 @@
     <div>
       {{ flag.status }}
     </div>
-    <div>
-      {{ flag.tags }}
+    <div class="tags">
+      <button
+          v-for="tag in flag.tags"
+          @click="$emit('tagClicked', tag)"
+          type="button"
+          class="nes-btn is-primary">
+        {{ tag }}
+      </button>
     </div>
   </div>
 </template>
@@ -27,7 +33,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 .flag {
   border: 4px solid black;
@@ -42,6 +48,12 @@ export default {
   background-color: white;
   padding: 0 10px;
   font-size: 20px;
+}
+
+.tags {
+  button {
+    margin-right: 10px;
+  }
 }
 
 </style>

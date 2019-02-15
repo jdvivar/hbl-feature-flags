@@ -6,7 +6,7 @@
           type="text"
           class="nes-input"
           placeholder="Search"
-          v-model="search">
+          v-model="searchText">
       <router-link to="/">
         <button
             type="button"
@@ -31,12 +31,17 @@
       </button>
     </div>
     <div class="flags">
-      <Flag v-for="flag in filteredFlags" :key="flag.id" :flag="flag"></Flag>
+      <Flag
+          v-for="flag in filteredFlags"
+          :key="flag.id"
+          :flag="flag"
+          @tagClicked="search">
+        </Flag>
       <div v-if="flags && filteredFlags.length === 0" class="error" >
         <div class="message -left">
           <i class="nes-octocat"></i>
           <div class="nes-balloon from-left">
-            <p>I couldn't find any flag with "{{ search }}"</p>
+            <p>I couldn't find any flag with "{{ searchText }}"</p>
           </div>
         </div>
         <div class="message -right">
@@ -60,15 +65,20 @@ export default {
     return {
       flags: [],
       error: false,
-      search: ''
+      searchText: ''
+    }
+  },
+  methods: {
+    search: function (tag) {
+      this.searchText = tag
     }
   },
   computed: {
     filteredFlags: function () {
       return this.flags.filter(flag =>
-        flag.title.toLowerCase().includes(this.search.toLowerCase())
-        || flag.id.toString().toLowerCase().includes(this.search.toLowerCase())
-        || flag.tags.toString().toLowerCase().includes(this.search.toLowerCase())
+        flag.title.toLowerCase().includes(this.searchText.toLowerCase())
+        || flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase())
+        || flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
       )
     }
   },
