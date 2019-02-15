@@ -4,7 +4,7 @@
       {{ flag.name}}
     </div>
     <div class="id">
-      id{{ flag.id }}
+      id:{{ flag.id }}
     </div>
     <div>
       {{ flag.status }}
@@ -40,6 +40,12 @@ export default {
   padding: 20px 20px 15px;
   margin: 40px 0;
   position: relative;
+  width: calc(100% - 12px);
+  left: 6px;
+
+  &:hover .id {
+    display: block;
+  }
 }
 
 .name {
@@ -56,12 +62,11 @@ export default {
 }
 
 .id {
+  display: none;
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: lightgray;
   font-size: 10px;
-  padding: 2px;
 }
 
 </style>

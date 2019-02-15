@@ -18,6 +18,7 @@
       <div class="nes-container is-rounded error-text">{{ errorText }}</div>
     </div>
     <div class="flags">
+      <NewFlagBtn></NewFlagBtn>
       <Flag
           v-for="flag in filteredFlags"
           :key="flag.id"
@@ -44,6 +45,7 @@
 <script>
 import Flag from '@/components/Flag'
 import Toolbar from '@/components/Toolbar'
+import NewFlagBtn from '@/components/NewFlagBtn'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
 import { mapState } from 'vuex'
 
@@ -70,7 +72,8 @@ export default {
   },
   components: {
     Flag,
-    Toolbar
+    Toolbar,
+    NewFlagBtn
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {

@@ -9,7 +9,7 @@
     </button>
     <button
         :class="{ hide: tags.length }"
-        class="nes-btn is-success add-tag">
+        class="nes-btn add-tag">
       + tag me
     </button>
   </div>

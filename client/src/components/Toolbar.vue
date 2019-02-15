@@ -34,9 +34,14 @@ export default {
     ]),
   },
   computed: {
-    ...mapState([
-      'searchText'
-    ])
+    searchText: {
+      get () {
+        return this.$store.state.searchText
+      },
+      set (newSearchText) {
+        this.$store.commit('setSearchText', newSearchText)
+      }
+    }
   },
 }
 </script>
@@ -57,7 +62,7 @@ export default {
     .close {
       position: absolute;
       top: 15px;
-      right: 190px;
+      right: 175px;
     }
 
     .logout {
