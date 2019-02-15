@@ -9,12 +9,7 @@
     <div>
       {{ flag.status }}
     </div>
-    <details class="description" v-if="flag.description">
-      <summary class="description-header">Description</summary>
-      <div class="nes-balloon">
-        {{ flag.description }}
-      </div>
-    </details>
+    <FlagDescription :description="flag.description"></FlagDescription>
     <div class="tags">
       <button
           v-for="tag in flag.tags"
@@ -34,6 +29,8 @@
 </template>
 
 <script>
+import FlagDescription from '@/components/FlagDescription'
+
 export default {
   name: 'Flag',
   props: {
@@ -41,6 +38,9 @@ export default {
       type: Object,
       required: true
     }
+  },
+  components: {
+    FlagDescription
   }
 }
 </script>
@@ -92,16 +92,6 @@ export default {
 
   .add-tag.hide {
     display: none;
-  }
-}
-
-.description {
-  margin: 20px 0;
-
-  .description-header {
-    font-weight: 700;
-    outline: none;
-    margin-bottom: 20px;
   }
 }
 
