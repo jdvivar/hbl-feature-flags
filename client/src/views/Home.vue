@@ -22,7 +22,7 @@
           v-for="flag in filteredFlags"
           :key="flag.id"
           :flag="flag">
-        </Flag>
+      </Flag>
       <div v-if="flags.length && filteredFlags.length === 0" class="error" >
         <div class="message -left">
           <i class="nes-octocat"></i>

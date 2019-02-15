@@ -1,5 +1,5 @@
 <template>
-  <div class="flag">
+  <div class="flag nes-container is-rounded">
     <div class="name">
       {{ flag.name}}
     </div>
@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 
 .flag {
-  border: 4px solid black;
+  // border: 4px solid black;
   padding: 20px 20px 15px;
   margin: 40px 0;
   position: relative;
