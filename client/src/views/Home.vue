@@ -2,7 +2,7 @@
   <div>
     <div id="tools">
       <input :disabled="error" type="text" id="name_field" class="nes-input" placeholder="Search">
-      <router-link to="auth">
+      <router-link to="/">
         <button
             type="button"
             class="nes-btn is-error">
@@ -49,13 +49,13 @@ export default {
   beforeRouteEnter (to, from, next) {
     next(vm => {
       FeatureFlagsApi.get()
-      .then(answer => {
-        vm.error = false
-        vm.flags = answer
-      })
-      .catch(() => {
-        vm.error = true
-      })
+        .then(answer => {
+          vm.error = false
+          vm.flags = answer
+        })
+        .catch(() => {
+          vm.error = true
+        })
     })
   }
 }
