@@ -7,7 +7,7 @@
           class="nes-input"
           placeholder="Filterr my frriend..."
           v-model="searchText">
-      <a @click="search('')" v-show="searchText">
+      <a @click="setSearchText('')" v-show="searchText">
         <i class="nes-icon close is-small"></i>
       </a>
       <router-link to="/">
@@ -37,8 +37,7 @@
       <Flag
           v-for="flag in filteredFlags"
           :key="flag.id"
-          :flag="flag"
-          @tagClicked="search">
+          :flag="flag">
         </Flag>
       <div v-if="flags && filteredFlags.length === 0" class="error" >
         <div class="message -left">
@@ -61,20 +60,20 @@
 <script>
 import Flag from '@/components/Flag'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'home',
   data: function () {
     return {
       flags: [],
-      error: false,
-      searchText: ''
+      error: false
     }
   },
   methods: {
-    search: function (what) {
-      this.searchText = what
-    }
+    ...mapMutations([
+      'setSearchText'
+    ]),
   },
   computed: {
     filteredFlags: function () {
@@ -83,7 +82,10 @@ export default {
         flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase()) ||
         flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
       )
-    }
+    },
+    ...mapState([
+      'searchText'
+    ])
   },
   components: {
     Flag
