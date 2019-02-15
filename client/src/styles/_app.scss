@@ -1,5 +1,7 @@
 @import 'fonts';
 @import '~nes.css/scss/nes';
+@import 'nes-overrides';
+@import 'animations';
 
 html, body {
   cursor: url('assets/cursor.png'), auto;

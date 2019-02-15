@@ -1,0 +1,22 @@
+
+// Message ballons
+.message {
+  display: flex;
+
+  &.message.-left {
+    align-self: flex-start;
+  }
+
+  &.message.-right {
+    align-self: flex-end;
+  }
+
+  i {
+    align-self: flex-end;
+  }
+}
+
+// Google icon background
+.nes-icon.google::before {
+  color: transparent !important;
+}
