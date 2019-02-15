@@ -1,28 +1,11 @@
 <template>
   <div>
-    <div id="tools">
-      <input
-          :disabled="error"
-          type="text"
-          class="nes-input"
-          placeholder="Filterr my frriend..."
-          v-model="searchText">
-      <a @click="setSearchText('')" v-show="searchText">
-        <i class="nes-icon close is-small"></i>
-      </a>
-      <router-link to="/">
-        <button
-            type="button"
-            class="nes-btn is-error logout">
-          Log out
-        </button>
-      </router-link>
-    </div>
+    <Toolbar :error="error"></Toolbar>
     <div v-if="error" class="error">
       <div class="message -left">
         <i class="nes-octocat bounce"></i>
         <div class="nes-balloon from-left">
-          <p>Uh oh! No flags... :(</p>
+          <p>Uh oh! API no good... :(</p>
         </div>
       </div>
       <button
@@ -30,8 +13,9 @@
           id="reload"
           class="nes-btn is-warning"
           onClick="window.location.reload()">
-        Reload
+        Click to try again
       </button>
+      <div class="nes-container is-rounded error-text">{{ errorText }}</div>
     </div>
     <div class="flags">
       <Flag
@@ -39,7 +23,7 @@
           :key="flag.id"
           :flag="flag">
         </Flag>
-      <div v-if="flags && filteredFlags.length === 0" class="error" >
+      <div v-if="flags.length && filteredFlags.length === 0" class="error" >
         <div class="message -left">
           <i class="nes-octocat"></i>
           <div class="nes-balloon from-left">
@@ -59,21 +43,18 @@
 
 <script>
 import Flag from '@/components/Flag'
+import Toolbar from '@/components/Toolbar'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
-import { mapState, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'home',
+  name: 'Home',
   data: function () {
     return {
       flags: [],
-      error: false
+      error: false,
+      errorText: ''
     }
-  },
-  methods: {
-    ...mapMutations([
-      'setSearchText'
-    ]),
   },
   computed: {
     filteredFlags: function () {
@@ -88,16 +69,19 @@ export default {
     ])
   },
   components: {
-    Flag
+    Flag,
+    Toolbar
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
       FeatureFlagsApi.get()
         .then(answer => {
           vm.error = false
+          vm.errorText = ''
           vm.flags = answer
         })
-        .catch(() => {
+        .catch((error) => {
+          vm.errorText = error
           vm.error = true
         })
     })
@@ -120,34 +104,12 @@ export default {
   margin-left: 40px;
 }
 
-#reload {
-  margin-top: 100px;
+.error-text {
+  background-color: #e76e55;
 }
 
-#tools {
-  position: relative;
-
-  .nes-input {
-    width: calc(100% - 168px);
-    margin-right: 20px;
-
-    &:disabled {
-      opacity: .2;
-    }
-  }
-
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 190px;
-  }
-
-  .logout {
-    font-size: 14px;
-    position: relative;
-    top: -3px;
-    width: 136px;
-  }
+#reload {
+  margin-top: 100px;
 }
 
 </style>
