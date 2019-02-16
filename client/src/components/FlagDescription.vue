@@ -18,16 +18,16 @@ export default {
 
 <style lang="scss" scoped>
 .description {
-  margin: 20px 0;
+  margin-top: 20px;
 
   .description-header {
     font-weight: 700;
     outline: none;
-    margin-bottom: 20px;
   }
 }
 
 .nes-balloon {
-  margin-bottom: 8px;
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 </style>
