@@ -16,17 +16,22 @@
         Log out
       </button>
     </router-link>
+    <NewFlagBtn v-if="!error"></NewFlagBtn>
   </div>
 </template>
 
 <script>
 
+import NewFlagBtn from '@/components/NewFlagBtn'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'Toolbar',
   props: {
     error: Boolean
+  },
+  components: {
+    NewFlagBtn
   },
   methods: {
     ...mapMutations([
