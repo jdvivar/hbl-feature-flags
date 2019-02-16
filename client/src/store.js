@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     searchText: '',
     flags: [],
@@ -17,6 +17,7 @@ export default new Vuex.Store({
       state.flags = flags
     },
     setShowTags (state, newValue) {
+      localStorage.setItem('hbl-feature-flags:showTags', newValue)
       state.showTags = newValue
     }
   },
@@ -24,3 +25,7 @@ export default new Vuex.Store({
 
   }
 })
+
+store.commit('setShowTags', localStorage.getItem('hbl-feature-flags:showTags'))
+
+export default store

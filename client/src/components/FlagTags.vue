@@ -1,5 +1,5 @@
 <template>
-  <div class="tags" v-if="showTags">
+  <div class="tags" v-show="showTags">
     <span v-for="tag in tags">
       <button
           type="button"
@@ -37,7 +37,7 @@ export default {
   },
   data: function () {
     return {
-      newTag: false,
+      newTag: false
     }
   },
   methods: {

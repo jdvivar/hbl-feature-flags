@@ -26,4 +26,8 @@ export default {
     margin-bottom: 20px;
   }
 }
+
+.nes-balloon {
+  margin-bottom: 8px;
+}
 </style>
