@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     searchText: '',
-    flags: []
+    flags: [],
+    showTags: false
   },
   mutations: {
     setSearchText (state, newSearchText) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     setFlags (state, flags) {
       state.flags = flags
+    },
+    setShowTags (state, newValue) {
+      state.showTags = newValue
     }
   },
   actions: {

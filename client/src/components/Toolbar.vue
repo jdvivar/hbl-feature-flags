@@ -17,6 +17,10 @@
       </button>
     </router-link>
     <NewFlagBtn v-if="!error"></NewFlagBtn>
+    <label>
+      <input type="checkbox" class="nes-checkbox" v-model="showTags">
+      <span>Show tags</span>
+    </label>
   </div>
 </template>
 
@@ -45,6 +49,14 @@ export default {
       },
       set (newSearchText) {
         this.$store.commit('setSearchText', newSearchText)
+      }
+    },
+    showTags: {
+      get() {
+        return this.$store.state.showTags
+      },
+      set (newValue) {
+        this.$store.commit('setShowTags', newValue)
       }
     }
   },

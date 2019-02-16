@@ -1,5 +1,5 @@
 <template>
-  <div class="tags">
+  <div class="tags" v-if="showTags">
     <span v-for="tag in tags">
       <button
           type="button"
@@ -71,7 +71,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'flags'
+      'flags',
+      'showTags'
     ]),
     tags: function () {
       return this.flags[this.flagIndex].tags
