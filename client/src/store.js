@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    searchText: ''
+    searchText: '',
+    flags: []
   },
   mutations: {
     setSearchText (state, newSearchText) {
       state.searchText = newSearchText
+    },
+    setFlags (state, flags) {
+      state.flags = flags
     }
   },
   actions: {

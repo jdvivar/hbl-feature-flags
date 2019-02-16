@@ -10,7 +10,7 @@
       {{ flag.status }}
     </div>
     <FlagDescription :description="flag.description"></FlagDescription>
-    <FlagTags :tags="flag.tags"></FlagTags>
+    <FlagTags :id="flag.id" :tags="flag.tags"></FlagTags>
   </div>
 </template>
 

@@ -1,32 +1,84 @@
 <template>
   <div class="tags">
-    <button
-        v-for="tag in tags"
-        @click="setSearchText(tag)"
-        type="button"
-        class="nes-btn is-primary">
-      {{ tag }}
-    </button>
+    <span v-for="tag in tags">
+      <button
+          type="button"
+          @click="setSearchText(tag)"
+          class="nes-btn is-primary">
+        {{ tag }}
+      </button>
+      <a @click="removeTag(tag)"><i class="nes-icon close is-small"></i></a>
+    </span>
     <button
         :class="{ hide: tags.length }"
-        class="nes-btn add-tag">
+        class="nes-btn add-tag"
+        @click="newTag = true"
+        >
       + tag me
     </button>
+    <div class="nes-field" v-if="newTag" @keyup.enter="saveNewTag">
+      <label>New tag</label>
+      <input type="text" class="nes-input" @keyup.esc="newTag = false">
+    </div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
+import FeatureFlagsApi from '@/services/FeatureFlagsApi'
 
 export default {
   name: 'FlagTags',
   props: {
-    tags: Array
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+  data: function () {
+    return {
+      newTag: false,
+    }
   },
   methods: {
+    saveNewTag: function ({ target: { value: newTag }}) {
+      this.flags[this.flagIndex].tags.push(newTag)
+      FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
+        .then(() => {
+          this.setFlags(this.flags)
+          this.newTag = false
+        })
+        .catch(error => {
+          this.flags[this.flagIndex].tags.pop()
+          console.log(error)
+        })
+    },
+    removeTag: function (tagToRemove) {
+      this.flags[this.flagIndex].tags = this.tags.filter(tag => tag !== tagToRemove)
+      FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
+        .then(() => {
+          this.setFlags(this.flags)
+        })
+        .catch(error => {
+          this.flags[this.flagIndex].tags.push(tagToRemove)
+          console.log(error)
+        })
+    },
     ...mapMutations([
-      'setSearchText'
+      'setSearchText',
+      'setFlags'
     ]),
+  },
+  computed: {
+    ...mapState([
+      'flags'
+    ]),
+    tags: function () {
+      return this.flags[this.flagIndex].tags
+    },
+    flagIndex: function () {
+      return this.flags.findIndex(flag => flag.id === this.id)
+    }
   }
 }
 </script>
@@ -48,5 +100,9 @@ export default {
   .add-tag.hide {
     display: none;
   }
+}
+
+.close {
+  margin-right: 15px;
 }
 </style>

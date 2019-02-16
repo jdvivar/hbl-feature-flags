@@ -47,16 +47,20 @@ import Flag from '@/components/Flag'
 import Toolbar from '@/components/Toolbar'
 import NewFlagBtn from '@/components/NewFlagBtn'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'Home',
   data: function () {
     return {
-      flags: [],
       error: false,
       errorText: ''
     }
+  },
+  methods: {
+    ...mapMutations([
+      'setFlags',
+    ]),
   },
   computed: {
     filteredFlags: function () {
@@ -67,7 +71,8 @@ export default {
       )
     },
     ...mapState([
-      'searchText'
+      'searchText',
+      'flags'
     ])
   },
   components: {
@@ -78,10 +83,10 @@ export default {
   beforeRouteEnter (to, from, next) {
     next(vm => {
       FeatureFlagsApi.get()
-        .then(answer => {
+        .then(newFlags => {
           vm.error = false
           vm.errorText = ''
-          vm.flags = answer
+          vm.setFlags(newFlags)
         })
         .catch((error) => {
           vm.errorText = error
