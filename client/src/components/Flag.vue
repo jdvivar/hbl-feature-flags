@@ -50,11 +50,11 @@ export default {
     ...mapMutations([
       'setFlags',
       'setEditMode'
-    ]),
+    ])
   },
   components: {
     FlagDescription,
-    FlagTags,
+    FlagTags
   },
   computed: {
     ...mapState([

@@ -57,8 +57,8 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'setFlags',
-    ]),
+      'setFlags'
+    ])
   },
   computed: {
     filteredFlags: function () {

@@ -1,6 +1,6 @@
 <template>
   <div class="tags" v-show="showTags">
-    <span v-for="tag in tags">
+    <span v-for="tag in tags" :key="`${id}${tag}`">
       <button
           type="button"
           @click="setSearchText(tag)"
@@ -41,7 +41,7 @@ export default {
     }
   },
   methods: {
-    saveNewTag: function ({ target: { value: newTag }}) {
+    saveNewTag: function ({ target: { value: newTag } }) {
       this.flags[this.flagIndex].tags.push(newTag)
       FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
         .then(() => {
@@ -67,7 +67,7 @@ export default {
     ...mapMutations([
       'setSearchText',
       'setFlags'
-    ]),
+    ])
   },
   computed: {
     ...mapState([

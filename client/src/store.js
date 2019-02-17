@@ -8,7 +8,7 @@ const store = new Vuex.Store({
     searchText: '',
     flags: [],
     showTags: JSON.parse(localStorage.getItem('hbl-feature-flags:showTags')),
-    editMode: JSON.parse(localStorage.getItem('hbl-feature-flags:editMode')),
+    editMode: JSON.parse(localStorage.getItem('hbl-feature-flags:editMode'))
   },
   mutations: {
     setSearchText (state, newSearchText) {

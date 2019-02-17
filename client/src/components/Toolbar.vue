@@ -33,7 +33,7 @@
 <script>
 
 import NewFlagBtn from '@/components/NewFlagBtn'
-import { mapState, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'Toolbar',
@@ -46,7 +46,7 @@ export default {
   methods: {
     ...mapMutations([
       'setSearchText'
-    ]),
+    ])
   },
   computed: {
     searchText: {
@@ -58,7 +58,7 @@ export default {
       }
     },
     showTags: {
-      get() {
+      get () {
         return this.$store.state.showTags
       },
       set (newValue) {
@@ -66,7 +66,7 @@ export default {
       }
     },
     editMode: {
-      get() {
+      get () {
         return this.$store.state.editMode
       },
       set (newValue) {
