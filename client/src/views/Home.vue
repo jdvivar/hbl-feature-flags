@@ -98,7 +98,7 @@ export default {
 
 .error {
   text-align: center;
-  margin: 200px 0;
+  margin: 100px 0;
 
   .message {
     margin-bottom: 50px;
