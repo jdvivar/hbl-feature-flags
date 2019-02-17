@@ -6,7 +6,7 @@
     </header>
     <router-view/>
     <footer>
-      <h4>Made with <i class="nes-icon heart"></i> by Daniel Vivar</h4>
+      <h4>Made with <i class="nes-icon heart"></i> by D. Vivar & M. García</h4>
     </footer>
   </div>
 </template>
