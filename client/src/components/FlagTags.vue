@@ -7,7 +7,7 @@
           class="nes-btn is-primary">
         {{ tag }}
       </button>
-      <a @click="removeTag(tag)"><i class="nes-icon close is-small"></i></a>
+      <a v-if="editMode" class="editable" @click="removeTag(tag)"><i class="nes-icon close is-small"></i></a>
     </span>
     <button
         :class="{ hide: tags.length }"
@@ -72,7 +72,8 @@ export default {
   computed: {
     ...mapState([
       'flags',
-      'showTags'
+      'showTags',
+      'editMode'
     ]),
     tags: function () {
       return this.flags[this.flagIndex].tags

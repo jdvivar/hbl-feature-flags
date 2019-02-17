@@ -44,3 +44,7 @@ footer {
   font-size: 70px;
   padding: 20px 30px 10px 40px;
 }
+
+[contenteditable], .editable {
+  animation: blink 1s linear infinite;
+}

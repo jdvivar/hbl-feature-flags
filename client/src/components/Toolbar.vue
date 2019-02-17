@@ -17,10 +17,16 @@
       </button>
     </router-link>
     <NewFlagBtn v-if="!error"></NewFlagBtn>
-    <label>
-      <input type="checkbox" class="nes-checkbox" v-model="showTags">
-      <span>Show tags</span>
-    </label>
+    <div class="checkboxes">
+      <label>
+        <input type="checkbox" class="nes-checkbox" v-model="showTags">
+        <span>Show tags</span>
+      </label>
+      <label>
+        <input type="checkbox" class="nes-checkbox" v-model="editMode">
+        <span>Edit mode</span>
+      </label>
+    </div>
   </div>
 </template>
 
@@ -58,6 +64,14 @@ export default {
       set (newValue) {
         this.$store.commit('setShowTags', newValue)
       }
+    },
+    editMode: {
+      get() {
+        return this.$store.state.editMode
+      },
+      set (newValue) {
+        this.$store.commit('setEditMode', newValue)
+      }
     }
   }
 }
@@ -88,5 +102,9 @@ export default {
       top: -3px;
       width: 136px;
     }
+  }
+
+  .checkboxes label {
+    margin-right: 20px;
   }
 </style>

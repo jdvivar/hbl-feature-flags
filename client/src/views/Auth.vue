@@ -31,9 +31,4 @@ button {
   padding: 20px;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
 </style>
