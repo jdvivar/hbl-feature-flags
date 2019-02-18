@@ -98,10 +98,10 @@ export default {
 
 .error {
   text-align: center;
-  margin: 100px 0;
+  margin: 80px 0;
 
   .message {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 }
 
@@ -110,11 +110,12 @@ export default {
 }
 
 .error-text {
+  margin-top: 40px;
   background-color: #e76e55;
 }
 
 #reload {
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 </style>

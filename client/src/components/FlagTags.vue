@@ -95,6 +95,7 @@ export default {
     font-size: 12px;
   }
 
+
   &:hover .add-tag.hide {
     display: inline-block;
   }
@@ -107,4 +108,5 @@ export default {
 .close {
   margin-right: 15px;
 }
+
 </style>

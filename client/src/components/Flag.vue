@@ -15,7 +15,7 @@
     <div>
       {{ flag.status }}
     </div>
-    <FlagDescription :description="flag.description"></FlagDescription>
+    <FlagDescription :id="flag.id" :description="flag.description"></FlagDescription>
     <FlagTags :id="flag.id" :tags="flag.tags"></FlagTags>
   </div>
 </template>
