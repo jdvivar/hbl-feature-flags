@@ -2,7 +2,7 @@
   <div>
     <button
       v-if="!description && !editMode"
-      class="nes-btn"
+      class="nes-btn add-description"
       @click="onClickAddDescription">
       + Add a description
     </button>
@@ -124,5 +124,9 @@ button {
 
 .nes-text.is-error {
   margin-top: 10px;
+}
+
+.add-description {
+  margin-top: 20px;
 }
 </style>

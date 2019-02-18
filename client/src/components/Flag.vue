@@ -16,6 +16,7 @@
       {{ flag.status }}
     </div>
     <FlagDescription :id="flag.id" :description="flag.description"></FlagDescription>
+    <hr v-if="showTags"/>
     <FlagTags :id="flag.id" :tags="flag.tags"></FlagTags>
   </div>
 </template>
@@ -59,7 +60,8 @@ export default {
   computed: {
     ...mapState([
       'editMode',
-      'flags'
+      'flags',
+      'showTags'
     ]),
     flagIndex: function () {
       return this.flags.findIndex(flag => flag.id === this.flag.id)
@@ -104,4 +106,9 @@ export default {
   font-size: 10px;
 }
 
+hr {
+  margin: 20px -25px;
+  border-color: black;
+  border-width: 1px;
+}
 </style>
