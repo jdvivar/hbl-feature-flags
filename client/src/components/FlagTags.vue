@@ -95,7 +95,6 @@ export default {
     font-size: 12px;
   }
 
-
   &:hover .add-tag.hide {
     display: inline-block;
   }

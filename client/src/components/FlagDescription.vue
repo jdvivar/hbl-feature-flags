@@ -47,7 +47,7 @@ export default {
     description: String,
     id: {
       type: Number,
-      required: true,
+      required: true
     }
   },
   data: function () {
@@ -64,7 +64,7 @@ export default {
     ...mapState([
       'editMode',
       'flags'
-    ]),
+    ])
   },
   methods: {
     saveDescription: function () {
