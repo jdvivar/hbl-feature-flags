@@ -11,6 +11,8 @@
     </FlagDescription>
     <hr v-if="showTags"/>
     <FlagTags :id="flag.id" :tags="flag.tags"></FlagTags>
+    <hr v-if="editMode"/>
+    <FlagRemoveBtn :id="flag.id"></FlagRemoveBtn>
   </div>
 </template>
 
@@ -19,6 +21,7 @@ import FlagDescription from '@/components/FlagDescription'
 import FlagTags from '@/components/FlagTags'
 import FlagName from '@/components/FlagName'
 import FlagStatus from '@/components/FlagStatus'
+import FlagRemoveBtn from '@/components/FlagRemoveBtn'
 import { mapState } from 'vuex'
 
 export default {
@@ -33,11 +36,13 @@ export default {
     FlagDescription,
     FlagTags,
     FlagName,
-    FlagStatus
+    FlagStatus,
+    FlagRemoveBtn
   },
   computed: {
     ...mapState([
-      'showTags'
+      'showTags',
+      'editMode'
     ])
   }
 }

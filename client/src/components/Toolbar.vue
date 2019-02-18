@@ -12,8 +12,8 @@
     <router-link to="/">
       <button
           type="button"
-          class="nes-btn is-error logout">
-        Log out
+          class="nes-btn is-warning logout">
+        Bye bye
       </button>
     </router-link>
     <NewFlagBtn v-if="!error"></NewFlagBtn>
