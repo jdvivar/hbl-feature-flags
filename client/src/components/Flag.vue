@@ -4,10 +4,11 @@
     <div class="id">
       id:{{ flag.id }}
     </div>
-    <div>
-      {{ flag.status }}
-    </div>
-    <FlagDescription :id="flag.id" :description="flag.description"></FlagDescription>
+    <FlagStatus :id="flag.id" :status="flag.status"></FlagStatus>
+    <FlagDescription
+        :id="flag.id"
+        :description="flag.description">
+    </FlagDescription>
     <hr v-if="showTags"/>
     <FlagTags :id="flag.id" :tags="flag.tags"></FlagTags>
   </div>
@@ -17,6 +18,7 @@
 import FlagDescription from '@/components/FlagDescription'
 import FlagTags from '@/components/FlagTags'
 import FlagName from '@/components/FlagName'
+import FlagStatus from '@/components/FlagStatus'
 import { mapState } from 'vuex'
 
 export default {
@@ -30,7 +32,8 @@ export default {
   components: {
     FlagDescription,
     FlagTags,
-    FlagName
+    FlagName,
+    FlagStatus
   },
   computed: {
     ...mapState([

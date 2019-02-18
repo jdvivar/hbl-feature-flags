@@ -4,7 +4,7 @@
       "id": 2,
       "name": "name for flag 2",
       "description": "Normal desription with just a few words",
-      "status": true,
+      "status": false,
       "tags": [
         "hola",
         "optimizely",
@@ -15,9 +15,9 @@
     },
     {
       "id": 1,
-      "name": "Very very very very loooooong name",
+      "name": "Very very very loooooong name",
       "description": "Have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat touch my tail, i shred your hand purrrr howl on top of tall thing for sun bathe, for have my breakfast spaghetti yarn have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat. Rub against owner because nose is wet purr when being pet. Stare at ceiling pelt around the house and up and down stairs chasing phantoms for sniff catnip and act crazy, so i cry and cry and cry unless you pet me, and then maybe i cry just for fun warm up laptop with butt lick butt fart rainbows until owner yells pee in litter box hiss at cats.",
-      "status": false,
+      "status": true,
       "tags": [
         "auth",
         "assessment",

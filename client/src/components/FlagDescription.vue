@@ -14,7 +14,7 @@
           v-model="descriptionText"
           rows="5"
           placeholder="Describe me please!"></textarea>
-      <div v-if="editMode">
+      <div class="description-toolbar" v-if="editMode">
         <button
             type="button"
             class="nes-btn is-success"
@@ -117,7 +117,7 @@ textarea {
   margin: 20px 4px;
 }
 
-button {
+.description-toolbar button {
   margin-right: 10px;
 }
 
@@ -125,7 +125,7 @@ button {
   margin-top: 10px;
 }
 
-.add-description {
+button.add-description {
   margin-top: 20px;
 }
 </style>

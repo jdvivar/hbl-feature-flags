@@ -98,6 +98,7 @@ export default {
 
     .logout {
       font-size: 14px;
+      padding: 10px;
       position: relative;
       top: -3px;
       width: 136px;

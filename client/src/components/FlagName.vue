@@ -6,7 +6,7 @@
         @keydown.prevent.enter="saveName">
       {{ name }}
     </span>
-    <span v-else>{{ name}}</span>
+    <span v-else>{{ name }}</span>
   </div>
 </template>
 
@@ -59,12 +59,13 @@ export default {
   background-color: white;
   position: absolute;
   top: -15px;
+  left: 12px;
   padding: 0 10px;
   font-size: 20px;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(100% - 36px);
+  max-width: calc(100% - 50px);
 }
 </style>
