@@ -28,7 +28,6 @@
           Cancel
         </button>
         <div class="nes-text is-error" v-if="error">{{ error }}</div>
-        <hr />
       </div>
       <div v-else class="nes-balloon">
         {{ description }}
