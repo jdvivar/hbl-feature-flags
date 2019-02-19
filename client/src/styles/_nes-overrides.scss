@@ -25,6 +25,7 @@
   opacity: .3;
 }
 
+// Button groups
 .nes-btn-group {
   .nes-btn:first-child {
     z-index: 1
@@ -35,4 +36,9 @@
   .nes-btn-group .nes-btn:nth-child(#{$i + 1}) {
     left: -($i*8px);
   }
+}
+
+// Button hover animation
+.nes-btn {
+  transition: background .5s;
 }

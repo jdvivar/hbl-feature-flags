@@ -72,12 +72,13 @@ export default {
   width: calc(100% - 12px);
 
   &:hover .flag-share {
-    display: block;
+    opacity: 1;
   }
 }
 
 .flag-share {
-  display: none;
+  transition: opacity .3s;
+  opacity: 0;
 }
 
 hr {

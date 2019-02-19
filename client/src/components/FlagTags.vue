@@ -16,7 +16,7 @@
     </span>
     <button
         :class="{ hide: tags.length }"
-        class="nes-btn add-tag"
+        class="nes-btn add-tag is-primary"
         @click="newTag = true">
       + tag me
     </button>
@@ -105,12 +105,17 @@ export default {
   }
 
   &:hover .add-tag.hide {
-    display: inline-block;
+    opacity: 1
   }
 
   .add-tag.hide {
-    display: none;
+    transition: opacity .3s;
+    opacity: 0;
   }
+}
+
+.nes-field {
+  margin-right: 80px;
 }
 
 .close {
