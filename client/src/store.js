@@ -7,8 +7,8 @@ const store = new Vuex.Store({
   state: {
     searchText: '',
     flags: [],
-    showTags: JSON.parse(localStorage.getItem('hbl-feature-flags:showTags')),
-    editMode: JSON.parse(localStorage.getItem('hbl-feature-flags:editMode'))
+    showTags: true,
+    editMode: false
   },
   mutations: {
     setSearchText (state, newSearchText) {
@@ -30,5 +30,14 @@ const store = new Vuex.Store({
 
   }
 })
+
+if (localStorage.getItem('hbl-feature-flags:showTags')) {
+  store.commit('setShowTags', JSON.parse(localStorage.getItem('hbl-feature-flags:showTags')))
+}
+
+if (localStorage.getItem('hbl-feature-flags:editMode')) {
+  store.commit('setEditMode', JSON.parse(localStorage.getItem('hbl-feature-flags:editMode')))
+}
+
 
 export default store
