@@ -13,4 +13,8 @@
 
 <style lang="scss">
 @import 'styles/app';
+
+.heart {
+  top: 8px;
+}
 </style>
