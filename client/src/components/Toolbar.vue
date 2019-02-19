@@ -31,9 +31,10 @@
 </template>
 
 <script>
-
+import { START_TAG } from '@/services/Constants'
 import NewFlagBtn from '@/components/NewFlagBtn'
 import { mapMutations } from 'vuex'
+import { ID_START, TAGS_START } from '@/services/Constants'
 
 export default {
   name: 'Toolbar',
@@ -45,7 +46,9 @@ export default {
   },
   mounted: function () {
     if (this.$route.query.id) {
-      this.setSearchText(`id:${this.$route.query.id}`)
+      this.setSearchText(`${ID_START}${this.$route.query.id}`)
+    } else if (this.$route.query.tags) {
+      this.setSearchText(`${TAGS_START}${this.$route.query.tags}`)
     }
   },
   methods: {

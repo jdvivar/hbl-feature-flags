@@ -45,7 +45,9 @@
 import Flag from '@/components/Flag'
 import Toolbar from '@/components/Toolbar'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
+import { difference as _difference } from 'lodash'
 import { mapState, mapMutations } from 'vuex'
+import { ID_START, TAGS_START } from '@/services/Constants'
 
 export default {
   name: 'Home',
@@ -62,8 +64,12 @@ export default {
   },
   computed: {
     filteredFlags: function () {
-      if (this.searchText.startsWith('id:')) {
-        return this.flags.filter(flag => flag.id === Number.parseInt(this.searchText.substring(3)))
+      if (this.searchText.startsWith(ID_START)) {
+        const id = this.searchText.substring(ID_START.length)
+        return this.flags.filter(flag => flag.id === Number.parseInt(id))
+      } else if (this.searchText.startsWith(TAGS_START)) {
+        const tags = this.searchText.substring(TAGS_START.length).split(',')
+        return this.flags.filter(flag => _difference(tags, flag.tags).length === 0)
       } else {
         return this.flags.filter(flag =>
           flag.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
