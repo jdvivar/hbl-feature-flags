@@ -11,7 +11,7 @@ const FeatureFlagsApi = {
     body: JSON.stringify(body)
   })).json(),
 
-  post: async (id, body) => (await fetch(`${apiRoot}/${id}`, {
+  post: async (body) => (await fetch(apiRoot, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
