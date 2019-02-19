@@ -49,9 +49,7 @@
       "name": "name for flag 5",
       "description": "Hola",
       "status": true,
-      "tags": [
-        "assessment"
-      ]
+      "tags": []
     }
   ]
 }
