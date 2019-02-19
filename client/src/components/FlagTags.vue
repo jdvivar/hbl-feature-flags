@@ -4,7 +4,7 @@
       <button
           type="button"
           @click="setSearchText(`${TAGS_START}${tag}`)"
-          class="nes-btn is-primary">
+          class="nes-btn">
         {{ tag }}
       </button>
       <a

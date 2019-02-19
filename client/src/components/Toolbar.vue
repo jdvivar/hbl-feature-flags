@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import { START_TAG } from '@/services/Constants'
 import NewFlagBtn from '@/components/NewFlagBtn'
 import { mapMutations } from 'vuex'
 import { ID_START, TAGS_START } from '@/services/Constants'

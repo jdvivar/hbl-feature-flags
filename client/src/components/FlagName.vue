@@ -62,7 +62,7 @@ export default {
   font-size: 20px;
   font-weight: 700;
   left: 12px;
-  max-width: calc(100% - 50px);
+  max-width: calc(100% - 200px);
   overflow: hidden;
   padding: 0 10px;
   position: absolute;

@@ -5,19 +5,22 @@
         class="nes-text is-error">
       {{ error }}
     </div>
-    <span class="literal">
-      {{ status ? `ON` : `OFF` }}
-    </span>
-    <button
-        v-if="status"
-        class="nes-btn is-success"
-        @click="setStatusTo(false)">
-    </button>
-    <button
-        v-else
-        class="nes-btn is-error"
-        @click="setStatusTo(true)">
-    </button>
+    <div class="nes-btn-group">
+      <button
+          class="nes-btn"
+          :class="{ 'is-success': status}"
+          :disabled="status"
+          @click="setStatusTo(true)">
+        ON
+      </button>
+      <button
+          class="nes-btn"
+          :class="{ 'is-error': !status}"
+          :disabled="!status"
+          @click="setStatusTo(false)">
+        OFF
+      </button>
+    </div>
   </div>
 </template>
 
@@ -26,7 +29,7 @@ import FeatureFlagsApi from '@/services/FeatureFlagsApi'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: "FlagStatus",
+  name: 'FlagStatus',
   props: {
     id: {
       type: Number,
@@ -58,7 +61,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'flags',
+      'flags'
     ]),
     flagIndex: function () {
       return this.flags.findIndex(flag => flag.id === this.id)
@@ -68,19 +71,11 @@ export default {
 </script>
 
 <style scoped>
-  .literal {
-    font-size: 9px;
+  .nes-btn-group {
+    background: white;
+    padding: 0 2px 0 10px;
     position: absolute;
-    right: -18px;
-    text-align: center;
-    top: -30px;
-    width: 30px;
-  }
-
-  .nes-btn {
-    padding: 4px;
-    position: absolute;
-    right: -15px;
-    top: -15px;
+    right: 10px;
+    top: -20px;
   }
 </style>
