@@ -1,5 +1,5 @@
 <template>
-  <div class="flag-share">
+  <div class="flag-id">
     <a :href="`/home?id=${this.id}`" target="_blank">
       <div class="nes-btn is-primary">
         URL
@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  name: 'FlagShare',
+  name: 'FlagId',
   props: {
     id: {
       type: Number,
@@ -19,7 +19,7 @@ export default {
 }
 </script>
 <style scoped>
-  .flag-share {
+  .flag-id {
     position: absolute;
     right: -8px;
     bottom: -8px;

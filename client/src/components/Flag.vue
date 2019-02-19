@@ -4,10 +4,10 @@
         :id="flag.id"
         :name="flag.name">
     </FlagName>
-    <FlagShare
-        class="flag-share"
+    <FlagId
+        class="flag-id"
         :id="flag.id">
-    </FlagShare>
+    </FlagId>
     <FlagStatus
         :id="flag.id"
         :status="flag.status">
@@ -34,7 +34,7 @@ import FlagTags from '@/components/FlagTags'
 import FlagName from '@/components/FlagName'
 import FlagStatus from '@/components/FlagStatus'
 import FlagRemoveBtn from '@/components/FlagRemoveBtn'
-import FlagShare from '@/components/FlagShare'
+import FlagId from '@/components/FlagId'
 import { mapState } from 'vuex'
 
 export default {
@@ -51,7 +51,7 @@ export default {
     FlagName,
     FlagStatus,
     FlagRemoveBtn,
-    FlagShare
+    FlagId
   },
   computed: {
     ...mapState([
@@ -71,12 +71,12 @@ export default {
   position: relative;
   width: calc(100% - 12px);
 
-  &:hover .flag-share {
+  &:hover .flag-id {
     opacity: 1;
   }
 }
 
-.flag-share {
+.flag-id {
   transition: opacity .3s;
   opacity: 0;
 }
