@@ -52,6 +52,7 @@ export default {
     openRemoveFlagModal: function () {
       this.$refs.RemoveFlagModal.showModal()
     },
+    // @TODO refactor this into an vuex action
     onClickRemoveFlag: function () {
       FeatureFlagsApi.delete(this.id)
         .then(() => {

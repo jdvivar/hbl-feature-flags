@@ -50,6 +50,7 @@ export default {
     }
   },
   methods: {
+    // @TODO refactor this into an vuex action
     saveNewTag: function ({ target: { value: newTag } }) {
       this.flags[this.flagIndex].tags.push(newTag)
       FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
@@ -62,6 +63,7 @@ export default {
           console.log(error)
         })
     },
+    // @TODO refactor this into an vuex action
     removeTag: function (tagToRemove) {
       this.flags[this.flagIndex].tags = this.tags.filter(tag => tag !== tagToRemove)
       FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])

@@ -43,6 +43,7 @@ export default {
     }
   },
   methods: {
+    // @TODO refactor this into an vuex action
     setStatusTo: function (newStatus) {
       this.flags[this.flagIndex].status = newStatus
       FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])

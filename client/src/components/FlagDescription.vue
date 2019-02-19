@@ -81,6 +81,7 @@ export default {
     ])
   },
   methods: {
+    // @TODO refactor this into an vuex action
     saveDescription: function () {
       this.flags[this.flagIndex].description = this.descriptionText
       FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])

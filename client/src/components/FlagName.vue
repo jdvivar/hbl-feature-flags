@@ -26,6 +26,7 @@ export default {
     name: String
   },
   methods: {
+    // @TODO refactor this into an vuex action
     saveName: function (e) {
       this.flags[this.flagIndex].name = e.target.innerText
       FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
