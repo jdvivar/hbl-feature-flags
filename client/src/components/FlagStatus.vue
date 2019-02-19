@@ -1,6 +1,7 @@
 <template>
   <div class="status">
     <div class="nes-text is-error" v-if="error">{{ error }}</div>
+    <span class="literal">{{ status ? `ON` : `OFF` }}</span>
     <button
         v-if="status"
         class="nes-btn is-success"
@@ -61,6 +62,15 @@ export default {
 </script>
 
 <style scoped>
+  .literal {
+    font-size: 9px;
+    position: absolute;
+    top: -30px;
+    right: -18px;
+    width: 30px;
+    text-align: center;
+  }
+
   .nes-btn {
     padding: 4px;
     position: absolute;
