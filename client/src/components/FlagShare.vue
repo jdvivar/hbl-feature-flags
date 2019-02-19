@@ -2,7 +2,7 @@
   <div class="flag-share">
     <a :href="`/home?id=${this.id}`" target="_blank">
       <div class="nes-btn is-primary">
-        SHARE
+        URL
       </div>
     </a>
   </div>
@@ -23,7 +23,7 @@ export default {
     position: absolute;
     right: -8px;
     bottom: -8px;
-    font-size: 8px;
+    font-size: 12px;
 
     .nes-btn {
       padding: 1px;
