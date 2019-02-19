@@ -1,25 +1,34 @@
 <template>
   <div>
     <button
-      v-if="!description && !editMode"
-      class="nes-btn add-description"
-      @click="onClickAddDescription">
+        v-if="!description && !editMode"
+        class="nes-btn add-description"
+        @click="onClickAddDescription">
       + Add a description
     </button>
-    <details class="description" v-if="description || editMode" :open="showDescription">
-      <summary class="description-header">Description</summary>
+    <details
+        v-if="description || editMode"
+        class="description"
+        :open="showDescription">
+      <summary
+          class="description-header">
+        Description
+      </summary>
       <textarea
           v-if="editMode"
           class="nes-textarea"
           v-model="descriptionText"
           rows="5"
-          placeholder="Describe me please!"></textarea>
-      <div class="description-toolbar" v-if="editMode">
+          placeholder="Describe me please!">
+      </textarea>
+      <div
+          v-if="editMode"
+          class="description-toolbar">
         <button
             type="button"
             class="nes-btn is-success"
             @click="saveDescription">
-            Save
+          Save
         </button>
         <button
             type="button"
@@ -27,9 +36,15 @@
             @click="setEditMode(false)">
           Cancel
         </button>
-        <div class="nes-text is-error" v-if="error">{{ error }}</div>
+        <div
+            v-if="error"
+            class="nes-text is-error">
+          {{ error }}
+        </div>
       </div>
-      <div v-else class="nes-balloon">
+      <div
+          v-else
+          class="nes-balloon">
         {{ description }}
       </div>
     </details>
@@ -102,19 +117,19 @@ export default {
 }
 
 .nes-balloon {
-  margin-top: 20px;
   margin-bottom: 12px;
+  margin-top: 20px;
 }
 
 hr {
-  margin: 20px -25px;
   border-color: black;
   border-width: 2px;
+  margin: 20px -25px;
 }
 
 textarea {
-  resize: vertical;
   margin: 20px 4px;
+  resize: vertical;
 }
 
 .description-toolbar button {

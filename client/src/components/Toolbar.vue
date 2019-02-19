@@ -82,8 +82,8 @@ export default {
     position: relative;
 
     .nes-input {
-      width: calc(100% - 168px);
       margin-right: 20px;
+      width: calc(100% - 168px);
 
       &:disabled {
         opacity: .2;
@@ -92,8 +92,8 @@ export default {
 
     .close {
       position: absolute;
-      top: 15px;
-      right: 175px;
+      right: 178px;
+      top: 19px;
     }
 
     .logout {

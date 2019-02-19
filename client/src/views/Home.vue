@@ -25,7 +25,7 @@
       </Flag>
       <div v-if="flags.length && filteredFlags.length === 0" class="error" >
         <div class="message -left">
-          <i class="nes-octocat"></i>
+          <i class="nes-octocat animate"></i>
           <div class="nes-balloon from-left">
             <p>I couldn't find any flag with "{{ searchText }}"</p>
           </div>
@@ -97,8 +97,8 @@ export default {
 <style lang="scss" scoped>
 
 .error {
-  text-align: center;
   margin: 80px 0;
+  text-align: center;
 
   .message {
     margin-bottom: 40px;
@@ -110,8 +110,8 @@ export default {
 }
 
 .error-text {
-  margin-top: 40px;
   background-color: #e76e55;
+  margin-top: 40px;
 }
 
 #reload {

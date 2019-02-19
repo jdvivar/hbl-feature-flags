@@ -7,9 +7,9 @@
 html, body {
   cursor: $cursor-hand;
   height: 100%;
+  line-height: 1.42;
   margin: 0;
   padding: 0;
-  line-height: 1.42;
 }
 
 a, summary {
@@ -31,18 +31,18 @@ header {
 }
 
 footer {
-  text-align: center;
   margin-top: 80px;
+  text-align: center;
 }
 
 .zava-icon {
   background-color: $zava-blue;
   color: white;
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 70px;
   padding: 20px 30px 10px 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 [contenteditable], .editable {

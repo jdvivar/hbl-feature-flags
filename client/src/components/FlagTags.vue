@@ -7,16 +7,23 @@
           class="nes-btn is-primary">
         {{ tag }}
       </button>
-      <a v-if="editMode" class="editable" @click="removeTag(tag)"><i class="nes-icon close is-small"></i></a>
+      <a
+          v-if="editMode"
+          class="editable"
+          @click="removeTag(tag)">
+        <i class="nes-icon close is-small"></i>
+      </a>
     </span>
     <button
         :class="{ hide: tags.length }"
         class="nes-btn add-tag"
-        @click="newTag = true"
-        >
+        @click="newTag = true">
       + tag me
     </button>
-    <div class="nes-field" v-if="newTag" @keyup.enter="saveNewTag">
+    <div
+        v-if="newTag"
+        class="nes-field"
+        @keyup.enter="saveNewTag">
       <label>New tag</label>
       <input type="text" class="nes-input" @keyup.esc="newTag = false">
     </div>
@@ -90,9 +97,9 @@ export default {
   margin-top: 20px;
 
   button {
+    font-size: 12px;
     margin-bottom: 10px;
     margin-right: 10px;
-    font-size: 12px;
   }
 
   &:hover .add-tag.hide {

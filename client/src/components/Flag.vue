@@ -1,18 +1,29 @@
 <template>
   <div class="flag nes-container is-rounded">
-    <FlagName :id="flag.id" :name="flag.name"></FlagName>
-    <div class="id">
-      id:{{ flag.id }}
-    </div>
-    <FlagStatus :id="flag.id" :status="flag.status"></FlagStatus>
+    <FlagName
+        :id="flag.id"
+        :name="flag.name">
+    </FlagName>
+    <FlagShare
+        :id="flag.id">
+    </FlagShare>
+    <FlagStatus
+        :id="flag.id"
+        :status="flag.status">
+    </FlagStatus>
     <FlagDescription
         :id="flag.id"
         :description="flag.description">
     </FlagDescription>
     <hr v-if="showTags"/>
-    <FlagTags :id="flag.id" :tags="flag.tags"></FlagTags>
+    <FlagTags
+        :id="flag.id"
+        :tags="flag.tags">
+    </FlagTags>
     <hr v-if="editMode"/>
-    <FlagRemoveBtn :id="flag.id"></FlagRemoveBtn>
+    <FlagRemoveBtn
+        :id="flag.id">
+    </FlagRemoveBtn>
   </div>
 </template>
 
@@ -51,28 +62,20 @@ export default {
 <style lang="scss" scoped>
 
 .flag {
-  padding: 20px 20px 15px;
   margin: 40px 0;
+  left: 6px;
+  padding: 20px 20px 15px;
   position: relative;
   width: calc(100% - 12px);
-  left: 6px;
 
   &:hover .id {
     display: block;
   }
 }
 
-.id {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 10px;
-}
-
 hr {
-  margin: 20px -25px;
   border-color: black;
   border-width: 1px;
+  margin: 20px -25px;
 }
 </style>

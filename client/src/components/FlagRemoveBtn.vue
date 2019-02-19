@@ -1,16 +1,22 @@
 <template>
-  <div class="flag-remove-btn" v-if="editMode">
+  <div v-if="editMode" class="flag-remove-btn">
     <div class="nes-btn is-error" @click="openRemoveFlagModal">
       X Remove this flag
     </div>
-    <div>
-    <div class="nes-text is-error" v-if="error">{{ error }}</div>
+    <div v-if="error" class="nes-text is-error">
+      {{ error }}
     </div>
     <dialog class="nes-dialog is-rounded" ref="RemoveFlagModal">
       <form method="dialog">
-        <p class="title">You sure, pal?</p>
+        <p class="title">
+          You sure, pal?
+        </p>
         <menu class="dialog-menu">
-          <button class="nes-btn is-primary" @click="onClickRemoveFlag">Yep</button>
+          <button
+              class="nes-btn is-primary"
+              @click="onClickRemoveFlag">
+            Yep
+          </button>
           <button class="nes-btn">Nope</button>
         </menu>
       </form>
@@ -71,8 +77,8 @@ export default {
 }
 
 .nes-octocat {
-  right: 0;
   position: absolute;
+  right: 0;
 }
 
 menu {

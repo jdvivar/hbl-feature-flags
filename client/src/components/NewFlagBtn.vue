@@ -1,5 +1,5 @@
 <template>
-  <button class="nes-btn is-success">+ I DARE YOU TO ADD A FLAG!</button>
+  <button class="nes-btn is-success">+ Add a flag!</button>
 </template>
 
 <script>

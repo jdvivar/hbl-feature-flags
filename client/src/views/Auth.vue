@@ -18,8 +18,8 @@ export default {
 
 <style lang="scss" scoped>
 .Auth {
-  text-align: center;
   margin: 240px 0;
+  text-align: center;
 }
 
 h3 {
