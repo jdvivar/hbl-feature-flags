@@ -2,7 +2,7 @@
   "flags": [
     {
       "id": 2,
-      "name": "name for flag 2",
+      "name": "flag 2",
       "description": "Normal desription with just a few words",
       "status": false,
       "tags": [

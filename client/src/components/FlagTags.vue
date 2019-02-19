@@ -3,7 +3,7 @@
     <span v-for="tag in tags" :key="`${id}${tag}`">
       <button
           type="button"
-          @click="setSearchText(tag)"
+          @click="setSearchText(`${TAGS_START}${tag}`)"
           class="nes-btn is-primary">
         {{ tag }}
       </button>
@@ -33,6 +33,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
+import { TAGS_START } from '@/services/Constants'
 
 export default {
   name: 'FlagTags',
@@ -44,7 +45,8 @@ export default {
   },
   data: function () {
     return {
-      newTag: false
+      newTag: false,
+      TAGS_START
     }
   },
   methods: {
