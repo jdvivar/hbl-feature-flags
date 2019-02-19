@@ -43,6 +43,11 @@ export default {
   components: {
     NewFlagBtn
   },
+  mounted: function () {
+    if (this.$route.query.id) {
+      this.setSearchText(`id:${this.$route.query.id}`)
+    }
+  },
   methods: {
     ...mapMutations([
       'setSearchText'

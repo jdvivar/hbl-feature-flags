@@ -62,11 +62,15 @@ export default {
   },
   computed: {
     filteredFlags: function () {
-      return this.flags.filter(flag =>
-        flag.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase()) ||
-        flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
-      )
+      if (this.searchText.startsWith('id:')) {
+        return this.flags.filter(flag => flag.id === Number.parseInt(this.searchText.substring(3)))
+      } else {
+        return this.flags.filter(flag =>
+          flag.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          flag.id.toString().toLowerCase().includes(this.searchText.toLowerCase()) ||
+          flag.tags.toString().toLowerCase().includes(this.searchText.toLowerCase())
+        )
+      }
     },
     ...mapState([
       'searchText',
