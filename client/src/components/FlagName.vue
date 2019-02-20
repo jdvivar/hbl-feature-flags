@@ -1,14 +1,19 @@
 <template>
   <div class="name">
-    <span
+    <div class="name-wrapper">
+      <span
         v-if="editMode"
         contenteditable
         @keydown.prevent.enter="saveName">
-      {{ name }}
-    </span>
-    <span v-else>
-      {{ name }}
-    </span>
+        {{ name }}
+      </span>
+      <span v-else>
+        {{ name }}
+      </span>
+    </div>
+    <div v-if="error" class="error nes-text is-error">
+      Sorry, I couldn't update the name. Error:<br />{{ error }}
+    </div>
   </div>
 </template>
 
@@ -24,13 +29,19 @@ export default {
     },
     name: String
   },
+  data: function () {
+    return {
+      error: ''
+    }
+  },
   methods: {
     saveName: async function ({ target: { innerText: name }}) {
       try {
         await this.setName({ id: this.id, name })
         this.setEditMode(false)
+        this.error = ''
       } catch (error) {
-        console.log(error)
+        this.error = error
       }
     },
     ...mapMutations([
@@ -48,11 +59,9 @@ export default {
 }
 </script>
 
-<style scoped>
-  .name {
+<style lang="scss" scoped>
+  .name-wrapper {
     background-color: white;
-    font-size: 20px;
-    font-weight: 700;
     left: 12px;
     max-width: calc(100% - 200px);
     overflow: hidden;
@@ -61,5 +70,11 @@ export default {
     text-overflow: ellipsis;
     top: -15px;
     white-space: nowrap;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .error {
+    margin-top: 20px;
   }
 </style>
