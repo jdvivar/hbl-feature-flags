@@ -19,6 +19,7 @@
                 id="flag-name"
                 class="nes-input"
                 v-model="name"
+                required
                 :maxlength="max">
             <div
                 class="nes-text nes-input-right is-success"
