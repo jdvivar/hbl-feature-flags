@@ -22,9 +22,7 @@
         :tags="flag.tags">
     </FlagTags>
     <hr v-if="editMode"/>
-    <FlagRemoveBtn
-        :id="flag.id">
-    </FlagRemoveBtn>
+    <FlagRemoveBtn :id="flag.id"></FlagRemoveBtn>
   </div>
 </template>
 

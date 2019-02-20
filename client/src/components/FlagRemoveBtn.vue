@@ -4,7 +4,7 @@
       X Remove this flag
     </div>
     <div v-if="error" class="nes-text is-error">
-      Sorry I couldn't remove the flat. Error:<br />
+      Sorry I couldn't remove the flag. Error:<br />
       {{ error }}
     </div>
     <dialog class="nes-dialog is-rounded" ref="RemoveFlagModal">
@@ -26,8 +26,7 @@
 </template>
 
 <script>
-import FeatureFlagsApi from '@/services/FeatureFlagsApi'
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'FlagRemoveBtn',
@@ -45,29 +44,27 @@ export default {
   },
   computed: {
     ...mapState([
-      'editMode',
-      'flags'
+      'editMode'
     ])
   },
   methods: {
     openRemoveFlagModal: function () {
       this.$refs.RemoveFlagModal.showModal()
     },
-    // @TODO refactor this into an vuex action
-    onClickRemoveFlag: function () {
-      FeatureFlagsApi.delete(this.id)
-        .then(() => {
-          this.setFlags(this.flags.filter(flag => flag.id !== this.id))
-          this.setEditMode(false)
-          this.error = ''
-        })
-        .catch(error => {
-          this.error = error
-        })
+    onClickRemoveFlag: async function () {
+      try {
+        await this.removeFlag(this.id)
+        this.setEditMode(false)
+        this.error = ''
+      } catch (error) {
+        this.error = error
+      }
     },
     ...mapMutations([
-      'setFlags',
       'setEditMode'
+    ]),
+    ...mapActions([
+      'removeFlag'
     ])
   }
 }

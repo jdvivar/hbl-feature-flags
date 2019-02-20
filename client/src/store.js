@@ -30,9 +30,17 @@ const store = new Vuex.Store({
   actions: {
     async addFlag ({ commit, state }, flag) {
       try {
-        await FeatureFlagsApi.post(flag)
-        state.flags.push(flag)
+        const newFlag = await FeatureFlagsApi.post(flag)
+        state.flags.push(newFlag)
         commit('setFlags', state.flags)
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
+    async removeFlag ({ commit, state }, id) {
+      try {
+        await FeatureFlagsApi.delete(id)
+        commit('setFlags', state.flags.filter(flag => flag.id !== id))
       } catch (error) {
         return Promise.reject(error)
       }
