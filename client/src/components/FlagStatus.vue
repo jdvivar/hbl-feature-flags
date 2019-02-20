@@ -58,12 +58,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .nes-btn-group {
     background: white;
-    padding: 0 2px 0 10px;
+    padding: 0 0 10px 10px;
     position: absolute;
-    right: 10px;
+    right: -16px;
     top: -20px;
+
+    .nes-btn {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 </style>

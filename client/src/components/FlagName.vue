@@ -63,7 +63,7 @@ export default {
   .name-wrapper {
     background-color: white;
     left: 12px;
-    max-width: calc(100% - 200px);
+    max-width: calc(100% - 180px);
     overflow: hidden;
     padding: 0 10px;
     position: absolute;
