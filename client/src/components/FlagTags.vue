@@ -31,8 +31,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
-import FeatureFlagsApi from '@/services/FeatureFlagsApi'
+import { mapMutations, mapState, mapActions } from 'vuex'
 import { TAGS_START } from '@/services/Constants'
 
 export default {
@@ -51,45 +50,41 @@ export default {
     }
   },
   methods: {
-    // @TODO refactor this into an vuex action
-    saveNewTag: function ({ target: { value: newTag } }) {
-      this.flags[this.flagIndex].tags.push(newTag)
-      FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
-        .then(() => {
-          this.setFlags(this.flags)
-          this.newTag = false
-        })
-        .catch(error => {
-          this.flags[this.flagIndex].tags.pop()
-          console.log(error)
-        })
+    saveNewTag: async function ({ target: { value: newTag } }) {
+      if (this.tags.includes(newTag)) {
+        return false
+      }
+      try {
+        this.tags.push(newTag)
+        await this.setTags({ id: this.id, tags: this.tags })
+        this.newTag = false
+      } catch (error) {
+        this.tags.pop()
+        console.log(error)
+      }
     },
-    // @TODO refactor this into an vuex action
-    removeTag: function (tagToRemove) {
-      this.flags[this.flagIndex].tags = this.tags.filter(tag => tag !== tagToRemove)
-      FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
-        .then(() => {
-          this.setFlags(this.flags)
+    removeTag: async function (tagToRemove) {
+      try {
+        await this.setTags({
+          id: this.id,
+          tags: this.tags.filter(tag => tag !== tagToRemove)
         })
-        .catch(error => {
-          this.flags[this.flagIndex].tags.push(tagToRemove)
-          console.log(error)
-        })
+      } catch (error) {
+        console.log(error)
+      }
     },
     ...mapMutations([
-      'setSearchText',
-      'setFlags'
+      'setSearchText'
+    ]),
+    ...mapActions([
+      'setTags'
     ])
   },
   computed: {
     ...mapState([
-      'flags',
       'showTags',
       'editMode'
-    ]),
-    flagIndex: function () {
-      return this.flags.findIndex(flag => flag.id === this.id)
-    }
+    ])
   }
 }
 </script>
