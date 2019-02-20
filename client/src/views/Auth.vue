@@ -17,9 +17,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../styles/variables';
+
 .Auth {
-  margin: 240px 0;
+  margin: 80px 0;
   text-align: center;
+
+  @media (min-width: $breakpoint) {
+    margin: 240px 0;
+  }
 }
 
 h3 {
