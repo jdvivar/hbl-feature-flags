@@ -38,7 +38,7 @@
       </span>
     </div>
     <NewFlagBtn v-if="!error"></NewFlagBtn>
-    <div class="checkboxes">
+    <div class="checkboxes" v-if="!error">
       <label>
         <input type="checkbox" class="nes-checkbox" v-model="showTags">
         <span>Show tags</span>
