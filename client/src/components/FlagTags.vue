@@ -27,6 +27,9 @@
       <label>New tag</label>
       <input type="text" class="nes-input" @keyup.esc="newTag = false">
     </div>
+    <div v-if="error" class="error nes-text is-error">
+      Sorry! I couldn't save that tag. Error: <br />{{ error }}
+    </div>
   </div>
 </template>
 
@@ -46,12 +49,16 @@ export default {
   data: function () {
     return {
       newTag: false,
-      TAGS_START
+      TAGS_START,
+      error: ''
     }
   },
   methods: {
     saveNewTag: async function ({ target: { value: newTag } }) {
+      this.error = ''
+      
       if (this.tags.includes(newTag)) {
+        this.error = 'That tag already exists, be more original!'
         return false
       }
       try {
@@ -60,7 +67,7 @@ export default {
         this.newTag = false
       } catch (error) {
         this.tags.pop()
-        console.log(error)
+        this.error = error
       }
     },
     removeTag: async function (tagToRemove) {
@@ -69,8 +76,9 @@ export default {
           id: this.id,
           tags: this.tags.filter(tag => tag !== tagToRemove)
         })
+        this.error = ''
       } catch (error) {
-        console.log(error)
+        this.error = error
       }
     },
     ...mapMutations([
@@ -115,6 +123,10 @@ export default {
 
 .close {
   margin-right: 15px;
+}
+
+.error {
+  margin-top: 20px;
 }
 
 </style>
