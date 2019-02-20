@@ -34,7 +34,7 @@
 
 @for $i from 0 to 5 {
   .nes-btn-group .nes-btn:nth-child(#{$i + 1}) {
-    left: -($i*8px);
+    left: -($i * 8px);
   }
 }
 

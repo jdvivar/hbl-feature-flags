@@ -11,14 +11,14 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'styles/app';
 
 .heart {
   top: 8px;
 }
 
-h1 {
+header h1 {
   @media (max-width: $breakpoint - 1) {
     font-size: 26px;
     line-height: 1.85;
