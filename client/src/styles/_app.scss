@@ -24,6 +24,11 @@ a, summary {
 }
 
 header {
+  @media (max-width: $breakpoint - 1) {
+    border-bottom-width: 4px;
+    border-bottom-style: dashed;
+  }
+
   border-bottom-style: dotted;
   margin-bottom: 40px;
   padding-bottom: 10px;
