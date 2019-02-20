@@ -77,7 +77,6 @@ export default {
     ])
   },
   methods: {
-    // @TODO refactor this into an vuex action
     saveDescription: async function () {
       try {
         await this.setDescription({

@@ -47,6 +47,15 @@ const store = new Vuex.Store({
     },
     async setDescription (context, payload) {
       await setKey('description', context, payload)
+    },
+    async setName (context, payload) {
+      await setKey('name', context, payload)
+    },
+    async setStatus (context, payload) {
+      await setKey('status', context, payload)
+    },
+    async setTags (context, payload) {
+      await setKey('tags', context, payload)
     }
   }
 })
