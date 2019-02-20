@@ -50,7 +50,7 @@ import { mapState, mapMutations } from 'vuex'
 import { ID_START, TAGS_START } from '@/services/Constants'
 
 export default {
-  name: 'Home',
+  name: 'Flags',
   data: function () {
     return {
       error: false,

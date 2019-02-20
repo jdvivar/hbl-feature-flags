@@ -1,6 +1,6 @@
 <template>
   <div class="flag-id">
-    <a :href="`/home?id=${this.id}`" target="_blank">
+    <a :href="`/flags?id=${this.id}`" target="_blank">
       <div class="nes-btn is-primary">
         URL
       </div>

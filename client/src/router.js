@@ -14,9 +14,9 @@ export default new Router({
       component: Auth
     },
     {
-      path: '/home',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "home" */ './views/Home')
+      path: '/flags',
+      name: 'flags',
+      component: () => import(/* webpackChunkName: "flags" */ './views/Flags')
     }
   ]
 })

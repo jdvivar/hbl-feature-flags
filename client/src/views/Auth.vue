@@ -1,7 +1,7 @@
 <template>
   <div class="Auth">
     <h3>Press button to start</h3>
-    <router-link to="home">
+    <router-link to="flags">
       <button type="button" class="nes-btn">
         <i class="nes-icon google"></i>
       </button>
