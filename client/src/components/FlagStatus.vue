@@ -26,8 +26,7 @@
 </template>
 
 <script>
-import FeatureFlagsApi from '@/services/FeatureFlagsApi'
-import { mapState, mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'FlagStatus',
@@ -44,30 +43,17 @@ export default {
     }
   },
   methods: {
-    // @TODO refactor this into an vuex action
-    setStatusTo: function (newStatus) {
-      this.flags[this.flagIndex].status = newStatus
-      FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
-        .then(() => {
-          this.setFlags(this.flags)
-          this.error = ''
-        })
-        .catch(error => {
-          this.flags[this.flagIndex].status = this.status
-          this.error = error
-        })
+    setStatusTo: async function (status) {
+      try {
+        await this.setStatus({ id: this.id, status })
+        this.error = ''
+      } catch (error) {
+        this.error = error
+      }
     },
-    ...mapMutations([
-      'setFlags'
+    ...mapActions([
+      'setStatus'
     ])
-  },
-  computed: {
-    ...mapState([
-      'flags'
-    ]),
-    flagIndex: function () {
-      return this.flags.findIndex(flag => flag.id === this.id)
-    }
   }
 }
 </script>
