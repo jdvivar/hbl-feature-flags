@@ -35,7 +35,7 @@ export default {
     }
   },
   methods: {
-    saveName: async function ({ target: { innerText: name }}) {
+    saveName: async function ({ target: { innerText: name } }) {
       try {
         await this.setName({ id: this.id, name })
         this.setEditMode(false)

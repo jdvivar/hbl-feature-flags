@@ -56,7 +56,7 @@ export default {
   methods: {
     saveNewTag: async function ({ target: { value: newTag } }) {
       this.error = ''
-      
+
       if (this.tags.includes(newTag)) {
         this.error = 'That tag already exists, be more original!'
         return false

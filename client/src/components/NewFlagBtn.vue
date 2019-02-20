@@ -43,7 +43,12 @@
           <label for="type-select">What kind of flag is that?</label>
           <div class="nes-select">
             <select v-model="typeSelected" id="type-select">
-              <option v-for="type in FLAG_TYPES" :value="type">{{ type }}</option>
+              <option
+                  v-for="type in FLAG_TYPES"
+                  :value="type"
+                  :key="type">
+                {{ type }}
+              </option>
             </select>
           </div>
         </div>
