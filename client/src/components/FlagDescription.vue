@@ -44,7 +44,7 @@
       </div>
       <div
           v-else
-          class="nes-balloon">
+          class="description-content">
         {{ description }}
       </div>
     </details>
@@ -114,6 +114,11 @@ export default {
   .description-header {
     font-weight: 700;
     outline: none;
+  }
+
+  .description-content {
+    margin: 20px 0;
+    line-height: 1.6;
   }
 }
 
