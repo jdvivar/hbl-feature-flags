@@ -44,9 +44,25 @@ const store = new Vuex.Store({
       } catch (error) {
         return Promise.reject(error)
       }
+    },
+    async setDescription (context, payload) {
+      await setKey('description', context, payload)
     }
   }
 })
+
+async function setKey (key, { commit, state }, payload) {
+  const flagToUpdate = state.flags.find(flag => flag.id === payload.id)
+  const oldKeyValue = flagToUpdate[key]
+  flagToUpdate[key] = payload[key]
+  try {
+    await FeatureFlagsApi.put(payload.id, flagToUpdate)
+    commit('setFlags', state.flags)
+  } catch (error) {
+    flagToUpdate[key] = oldKeyValue
+    return Promise.reject(error)
+  }
+}
 
 if (localStorage.getItem('hbl-feature-flags:showTags')) {
   store.commit('setShowTags', JSON.parse(localStorage.getItem('hbl-feature-flags:showTags')))

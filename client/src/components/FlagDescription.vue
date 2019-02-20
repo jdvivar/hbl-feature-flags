@@ -53,8 +53,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-import FeatureFlagsApi from '@/services/FeatureFlagsApi'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'FlagDescription',
@@ -73,36 +72,33 @@ export default {
     }
   },
   computed: {
-    flagIndex: function () {
-      return this.flags.findIndex(flag => flag.id === this.id)
-    },
     ...mapState([
-      'editMode',
-      'flags'
+      'editMode'
     ])
   },
   methods: {
     // @TODO refactor this into an vuex action
-    saveDescription: function () {
-      this.flags[this.flagIndex].description = this.descriptionText
-      FeatureFlagsApi.put(this.id, this.flags[this.flagIndex])
-        .then(() => {
-          this.setFlags(this.flags)
-          this.setEditMode(false)
-          this.error = ''
+    saveDescription: async function () {
+      try {
+        await this.setDescription({
+          id: this.id,
+          description: this.descriptionText
         })
-        .catch(error => {
-          this.flags[this.flagIndex].description = this.description
-          this.error = error
-        })
+        this.setEditMode(false)
+        this.error = ''
+      } catch (error) {
+        this.error = error
+      }
     },
     onClickAddDescription: function () {
       this.setEditMode(true)
       this.showDescription = true
     },
     ...mapMutations([
-      'setEditMode',
-      'setFlags'
+      'setEditMode'
+    ]),
+    ...mapActions([
+      'setDescription'
     ])
   }
 }
