@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import FeatureFlagsApi from '@/services/FeatureFlagsApi'
 
 Vue.use(Vuex)
 
@@ -27,7 +28,15 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-
+    async addFlag ({ commit, state }, flag) {
+      try {
+        await FeatureFlagsApi.post(flag)
+        state.flags.push(flag)
+        commit('setFlags', state.flags)
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    }
   }
 })
 
@@ -38,6 +47,5 @@ if (localStorage.getItem('hbl-feature-flags:showTags')) {
 if (localStorage.getItem('hbl-feature-flags:editMode')) {
   store.commit('setEditMode', JSON.parse(localStorage.getItem('hbl-feature-flags:editMode')))
 }
-
 
 export default store

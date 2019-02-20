@@ -1,3 +1,6 @@
+a:hover {
+  text-decoration: none;
+}
 
 // Message ballons
 .message {
@@ -40,5 +43,13 @@
 
 // Button hover animation
 .nes-btn {
-  transition: background .5s;
+  transition: background-color .5s;
+}
+
+.nes-dialog {
+  max-width: 540px;
+}
+
+.nes-select {
+  padding-right: 8px;
 }

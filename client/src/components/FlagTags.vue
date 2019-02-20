@@ -41,7 +41,8 @@ export default {
     id: {
       type: Number,
       required: true
-    }
+    },
+    tags: Array
   },
   data: function () {
     return {
@@ -86,9 +87,6 @@ export default {
       'showTags',
       'editMode'
     ]),
-    tags: function () {
-      return this.flags[this.flagIndex].tags
-    },
     flagIndex: function () {
       return this.flags.findIndex(flag => flag.id === this.id)
     }

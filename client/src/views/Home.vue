@@ -64,6 +64,7 @@ export default {
   },
   computed: {
     filteredFlags: function () {
+      console.log(typeof this.flags)
       if (this.searchText.startsWith(ID_START)) {
         const id = this.searchText.substring(ID_START.length)
         return this.flags.filter(flag => flag.id === Number.parseInt(id))
