@@ -4,6 +4,7 @@
       X Remove this flag
     </div>
     <div v-if="error" class="nes-text is-error">
+      Sorry I couldn't remove the flat. Error:<br />
       {{ error }}
     </div>
     <dialog class="nes-dialog is-rounded" ref="RemoveFlagModal">

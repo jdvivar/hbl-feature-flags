@@ -3,6 +3,7 @@
     <div
         v-if="error"
         class="nes-text is-error">
+      Sorry I couldn't change the status of this flag. Error: <br />
       {{ error }}
     </div>
     <div class="nes-btn-group">

@@ -39,6 +39,7 @@
         <div
             v-if="error"
             class="nes-text is-error">
+          Sorry I couldn't updated the descritpion. Error:<br />
           {{ error }}
         </div>
       </div>

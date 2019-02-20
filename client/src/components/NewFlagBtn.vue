@@ -6,7 +6,7 @@
       + Add a flag!
     </button>
     <div v-if="error" class="nes-text is-error error">
-      {{ error }}
+      Sorry I couldn't add that flag. Error: <br />{{ error }}
     </div>
     <dialog class="nes-dialog is-rounded" ref="newFlagModal">
       <form method="dialog">
