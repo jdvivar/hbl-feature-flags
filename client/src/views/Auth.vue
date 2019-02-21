@@ -1,8 +1,8 @@
 <template>
-  <div class="Auth">
-    <h3>Press button to start</h3>
-    <GoogleSignInButton></GoogleSignInButton>
-  </div>
+<div class="Auth">
+  <h3>Press button to start</h3>
+  <GoogleSignInButton></GoogleSignInButton>
+</div>
 </template>
 
 <script>
@@ -20,17 +20,16 @@ export default {
 @import '~@/styles/variables';
 
 .Auth {
-  margin: 80px 0;
-  text-align: center;
+    margin: 80px 0;
+    text-align: center;
 
-  @media (min-width: $breakpoint) {
-    margin: 240px 0;
-  }
+    @media (min-width: $breakpoint) {
+        margin: 240px 0;
+    }
 }
 
 h3 {
-  animation: blink 1s linear infinite;
-  margin-bottom: 60px;
+    animation: blink 1s linear infinite;
+    margin-bottom: 60px;
 }
-
 </style>

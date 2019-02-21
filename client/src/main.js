@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import './registerAWSAmplifyAuth'
+// import './registerAWSAmplifyAuth'
 
 Vue.config.productionTip = false
 
