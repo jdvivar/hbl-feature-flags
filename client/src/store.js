@@ -44,6 +44,10 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    async getFlags ({ commit }) {
+      const flags = await FeatureFlagsApi.get()
+      await commit('setFlags', flags)
+    },
     async addFlag ({ commit, state }, flag) {
       try {
         const newFlag = await FeatureFlagsApi.post(flag)

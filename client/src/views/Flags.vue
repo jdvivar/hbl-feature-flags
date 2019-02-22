@@ -44,9 +44,8 @@
 <script>
 import Flag from '@/components/Flag'
 import Toolbar from '@/components/Toolbar'
-import FeatureFlagsApi from '@/services/FeatureFlagsApi'
 import { difference as _difference } from 'lodash'
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { ID_START, TAGS_START } from '@/services/Constants'
 
 export default {
@@ -56,11 +55,6 @@ export default {
       error: false,
       errorText: ''
     }
-  },
-  methods: {
-    ...mapMutations([
-      'setFlags'
-    ])
   },
   computed: {
     filteredFlags: function () {
@@ -81,24 +75,27 @@ export default {
     ...mapState([
       'searchText',
       'flags'
-    ])
+    ]),
   },
   components: {
     Flag,
     Toolbar
   },
+  methods: {
+    ...mapActions([
+      'getFlags'
+    ])
+  },
   beforeRouteEnter (to, from, next) {
-    next(vm => {
-      FeatureFlagsApi.get()
-        .then(newFlags => {
-          vm.error = false
-          vm.errorText = ''
-          vm.setFlags(newFlags)
-        })
-        .catch((error) => {
-          vm.errorText = error
-          vm.error = true
-        })
+    next(async vm => {
+      try {
+        await vm.getFlags()
+        vm.error = false
+        vm.errorText = ''
+      } catch (error) {
+        vm.error = true
+        vm.errorText = error
+      }
     })
   }
 }
