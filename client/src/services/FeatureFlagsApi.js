@@ -1,4 +1,4 @@
-const apiRoot = 'http://localhost:3000/flags'
+const apiRoot = 'https://hbl-feature-flags-db.firebaseio.com/flags.json'
 
 const FeatureFlagsApi = {
   get: async () => (await fetch(apiRoot, {
