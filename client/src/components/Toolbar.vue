@@ -116,8 +116,7 @@ export default {
     position: relative;
 
     .nes-input {
-      margin-right: 20px;
-      width: calc(100% - 168px);
+      width: calc(100% - 8px);
 
       &:disabled {
         opacity: .2;
