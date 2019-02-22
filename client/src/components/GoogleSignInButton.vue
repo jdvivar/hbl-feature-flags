@@ -18,7 +18,7 @@ import { mapActions } from 'vuex'
 const asyncGApiLoad = async () => {
   if (window.gapi) {
     return new Promise((resolve, reject) => {
-      window.gapi.load('client:auth2', { resolve, reject })
+      window.gapi.load('client:auth2', { callback: resolve, onerror: reject })
     })
   } else {
     return Promise.reject(new Error('Google API not available for load'))
