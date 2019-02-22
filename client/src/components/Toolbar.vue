@@ -1,8 +1,6 @@
 <template>
   <div class="toolbar">
-    <div class="nes-text salutation">
-      Hola {{ userName }}
-    </div>
+    <AuthBar></AuthBar>
     <input
         :disabled="error"
         type="text"
@@ -14,12 +12,6 @@
     <a @click="setSearchText('')" v-show="searchText">
       <i class="nes-icon close is-small"></i>
     </a>
-    <button
-        type="button"
-        class="nes-btn is-warning logout"
-        @click="onClickLogOut">
-      Bye bye
-    </button>
     <div v-if="showSearchHelp" class="search-help">
       <span
           v-if="this.searchText.startsWith(TAGS_START)"
@@ -55,7 +47,8 @@
 
 <script>
 import NewFlagBtn from '@/components/NewFlagBtn'
-import { mapMutations, mapState, mapActions } from 'vuex'
+import AuthBar from '@/components/AuthBar'
+import { mapMutations, mapState } from 'vuex'
 import { ID_START, TAGS_START } from '@/services/Constants'
 
 export default {
@@ -71,7 +64,8 @@ export default {
     }
   },
   components: {
-    NewFlagBtn
+    NewFlagBtn,
+    AuthBar
   },
   mounted: function () {
     if (this.$route.query.id) {
@@ -81,18 +75,8 @@ export default {
     }
   },
   methods: {
-    onClickLogOut: async function () {
-      try {
-        await this.logOut()
-      } catch (error) {
-        alert(`I can't log you out 😱`)
-      }
-    },
     ...mapMutations([
       'setSearchText'
-    ]),
-    ...mapActions([
-      'logOut'
     ])
   },
   computed: {
@@ -139,19 +123,10 @@ export default {
         opacity: .2;
       }
     }
-
     .close {
       position: absolute;
       right: 178px;
       top: 19px;
-    }
-
-    .logout {
-      font-size: 14px;
-      padding: 10px;
-      position: relative;
-      top: -3px;
-      width: 136px;
     }
   }
 

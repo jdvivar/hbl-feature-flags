@@ -4,6 +4,7 @@ import Auth from '@/views/Auth'
 import store from '@/store'
 
 const Flags = () => import(/* webpackChunkName: "flags" */ '@/views/Flags')
+const PageNotFound = () => import(/* webpackChunkName: "pageNotFound" */ '@/views/PageNotFound')
 
 Vue.use(Router)
 
@@ -23,6 +24,10 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '*',
+      component: PageNotFound
     }
   ]
 })
