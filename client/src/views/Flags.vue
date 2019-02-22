@@ -23,6 +23,14 @@
           :key="flag.id"
           :flag="flag">
       </Flag>
+      <div v-if="flags.length === 0 && !error" >
+        <div class="message -right zero-flags">
+          <div class="nes-balloon from-right">
+            <p>ZERO flags, mi dispiace questa API signore!</p>
+          </div>
+          <i class="nes-mario"></i>
+        </div>
+      </div>
       <div v-if="flags.length && filteredFlags.length === 0" class="error" >
         <div class="message -left">
           <i class="nes-octocat animate"></i>
@@ -75,7 +83,7 @@ export default {
     ...mapState([
       'searchText',
       'flags'
-    ]),
+    ])
   },
   components: {
     Flag,
@@ -119,6 +127,10 @@ export default {
 .error-text {
   background-color: #e76e55;
   margin-top: 40px;
+}
+
+.zero-flags {
+  margin-top: 80px;
 }
 
 #reload {
