@@ -12,6 +12,7 @@ const store = new Vuex.Store({
     showTags: true,
     editMode: false,
     userName: '',
+    imageUrl: '',
     authenticated: false
   },
   getters: {
@@ -34,6 +35,9 @@ const store = new Vuex.Store({
     },
     setUserName (state, newUserName) {
       state.userName = newUserName
+    },
+    setImageUrl (state, newImageUrl) {
+      state.imageUrl = newImageUrl
     },
     setAuthenticated (state, newAuthState) {
       state.authenticated = newAuthState
@@ -71,11 +75,13 @@ const store = new Vuex.Store({
     },
     logIn ({ commit }, user) {
       commit('setUserName', user.getBasicProfile().getGivenName())
+      commit('setImageUrl', user.getBasicProfile().getImageUrl())
       commit('setAuthenticated', true)
       router.push({ name: 'flags' })
     },
     async logOut ({ commit, state }) {
       commit('setUserName', '')
+      commit('setImageUrl', '')
       commit('setAuthenticated', false)
       await window.gapi.auth2.getAuthInstance().signOut()
       router.push({ name: 'auth' })
