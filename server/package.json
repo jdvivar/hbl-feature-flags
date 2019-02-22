@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "json-server --watch $npm_package_db"
   },
-  "db": "feature-flags-db.json",
+  "db": "../db.json",
   "author": "Daniel Vivar <mail@danielvivar.com>",
   "license": "ISC",
   "dependencies": {
