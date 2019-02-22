@@ -1,5 +1,6 @@
 <template>
 <div class="Auth">
+  <UpdatedContentModal></UpdatedContentModal>
   <h3>Press button to start</h3>
   <GoogleSignInButton></GoogleSignInButton>
 </div>
@@ -7,11 +8,13 @@
 
 <script>
 import GoogleSignInButton from '@/components/GoogleSignInButton'
+import UpdatedContentModal from '@/components/UpdatedContentModal'
 
 export default {
   name: 'Auth',
   components: {
-    GoogleSignInButton
+    GoogleSignInButton,
+    UpdatedContentModal
   }
 }
 </script>
