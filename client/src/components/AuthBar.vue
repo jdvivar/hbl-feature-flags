@@ -51,6 +51,8 @@ export default {
     pata: function () {
       if (!this.userName.localeCompare('ramon', {}, { sensitivity: 'base' })) {
         return '¿cómo va la pata?'
+      } else {
+        return ''
       }
     }
   },
@@ -65,7 +67,7 @@ export default {
     ...mapActions([
       'logOut'
     ])
-  },
+  }
 }
 </script>
 

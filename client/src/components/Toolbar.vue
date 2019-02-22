@@ -102,7 +102,7 @@ export default {
       },
       set (newValue) {
         this.$store.commit('setEditMode', newValue)
-      },
+      }
     },
     ...mapState([
       'userName'

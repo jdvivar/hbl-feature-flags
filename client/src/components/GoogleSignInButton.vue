@@ -17,11 +17,11 @@ import { mapActions } from 'vuex'
 
 const asyncGApiLoad = async () => {
   if (window.gapi) {
-    return new Promise((callback, onerror) => {
-      window.gapi.load('client:auth2', { callback, onerror })
+    return new Promise((resolve, reject) => {
+      window.gapi.load('client:auth2', { resolve, reject })
     })
   } else {
-    return Promise.reject('Google API not available for load')
+    return Promise.reject(new Error('Google API not available for load'))
   }
 }
 
@@ -65,11 +65,9 @@ export default {
       if (googleAuth.isSignedIn.get()) {
         this.logIn(googleAuth.currentUser.get())
       }
-      
     } catch (error) {
       this.error = error
     }
-
   }
 }
 </script>
