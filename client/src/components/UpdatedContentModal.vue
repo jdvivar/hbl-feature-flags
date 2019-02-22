@@ -4,7 +4,9 @@
       <p>
         New content available!
       </p>
-      <button class="nes-btn" @click="onClickRefresh">Refresh</button>
+      <menu>
+        <button class="nes-btn" @click="onClickRefresh">Refresh</button>
+      </menu>
     </form>
   </dialog>
 </template>
@@ -25,5 +27,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  menu {
+    margin: 40px 0 0;
+    padding: 0;
+    text-align: center;
+  }
 </style>

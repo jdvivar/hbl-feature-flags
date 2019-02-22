@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <UpdatedContentModal></UpdatedContentModal>
     <header>
       <h1>HBL<br />Feature<br />Flags</h1>
       <div class="zava-icon">Z</div>
