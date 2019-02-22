@@ -1,4 +1,6 @@
-const apiRoot = 'http://localhost:3000/flags'
+const apiRoot = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:3000/flags'
+  : 'https://my-json-server.typicode.com/jdvivar/hbl-feature-flags/flags'
 
 const FeatureFlagsApi = {
   get: async () => (await fetch(apiRoot, {
