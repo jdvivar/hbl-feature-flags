@@ -1,5 +1,8 @@
 <template>
   <div class="toolbar">
+    <div class="nes-text salutation">
+      Hola {{ userName }}
+    </div>
     <input
         :disabled="error"
         type="text"
@@ -11,13 +14,12 @@
     <a @click="setSearchText('')" v-show="searchText">
       <i class="nes-icon close is-small"></i>
     </a>
-    <router-link to="/">
-      <button
-          type="button"
-          class="nes-btn is-warning logout">
-        Bye bye
-      </button>
-    </router-link>
+    <button
+        type="button"
+        class="nes-btn is-warning logout"
+        @click="onClickLogOut">
+      Bye bye
+    </button>
     <div v-if="showSearchHelp" class="search-help">
       <span
           v-if="this.searchText.startsWith(TAGS_START)"
@@ -53,7 +55,7 @@
 
 <script>
 import NewFlagBtn from '@/components/NewFlagBtn'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState, mapActions } from 'vuex'
 import { ID_START, TAGS_START } from '@/services/Constants'
 
 export default {
@@ -79,8 +81,18 @@ export default {
     }
   },
   methods: {
+    onClickLogOut: async function () {
+      try {
+        await this.logOut()
+      } catch (error) {
+        alert(`I can't log you out 😱`)
+      }
+    },
     ...mapMutations([
       'setSearchText'
+    ]),
+    ...mapActions([
+      'logOut'
     ])
   },
   computed: {
@@ -106,8 +118,11 @@ export default {
       },
       set (newValue) {
         this.$store.commit('setEditMode', newValue)
-      }
-    }
+      },
+    },
+    ...mapState([
+      'userName'
+    ])
   }
 }
 </script>

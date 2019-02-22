@@ -8,6 +8,7 @@
 <script>
 import GoogleSignInButton from '@/components/GoogleSignInButton'
 
+
 export default {
   name: 'Auth',
   components: {
