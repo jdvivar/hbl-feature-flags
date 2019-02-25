@@ -33,12 +33,13 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.isAuthenticated) {
-      next('/')
-    } else {
+    if (store.getters.isAuthenticated) {
       next()
+      return
     }
+    next({ name: 'auth' })
   } else {
     next()
   }

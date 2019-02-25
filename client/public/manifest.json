@@ -1,7 +1,7 @@
 {
   "name": "HBL Feature Flags",
   "short_name": "FeatureFlags",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#e76e55",
