@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import FeatureFlagsApi from '@/services/FeatureFlagsApi'
+import { asyncGApiLoad, asyncGApiInit } from '@/services/GApi'
 import router from '@/router'
 
 Vue.use(Vuex)
@@ -13,10 +14,12 @@ const store = new Vuex.Store({
     editMode: false,
     userName: '',
     imageUrl: '',
-    authenticated: false
+    authenticated: false,
+    startedAuthentication: false
   },
   getters: {
-    isAuthenticated: ({ authenticated }) => authenticated
+    isAuthenticated: ({ authenticated }) => authenticated,
+    hasStartedAuthentication: ({ startedAuthentication }) => startedAuthentication
   },
   mutations: {
     setSearchText (state, newSearchText) {
@@ -41,6 +44,9 @@ const store = new Vuex.Store({
     },
     setAuthenticated (state, newAuthState) {
       state.authenticated = newAuthState
+    },
+    setStartedAuthentication (state, newValue) {
+      state.startedAuthentication = newValue
     }
   },
   actions: {
@@ -77,11 +83,22 @@ const store = new Vuex.Store({
     async setTags (context, payload) {
       await setKey('tags', context, payload)
     },
-    logIn ({ commit }, user) {
-      commit('setUserName', user.getBasicProfile().getGivenName())
-      commit('setImageUrl', user.getBasicProfile().getImageUrl())
+    async startAuthentication ({ dispatch }, payload) {
+      await asyncGApiLoad()
+      const googleAuth = await asyncGApiInit()
+      if (googleAuth.isSignedIn.get()) {
+        const user = await googleAuth.currentUser.get()
+        dispatch('logIn', {
+          name: user.getBasicProfile().getGivenName(),
+          imageUrl: user.getBasicProfile().getImageUrl()
+        })
+      }
+    },
+    logIn ({ commit }, { name, imageUrl }) {
+      commit('setUserName', name)
+      commit('setImageUrl', imageUrl)
       commit('setAuthenticated', true)
-      router.push({ name: 'flags' })
+      commit('setStartedAuthentication', true)
     },
     async logOut ({ commit, state }) {
       commit('setUserName', '')

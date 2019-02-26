@@ -32,14 +32,20 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-
+// Auth navigation guard
+router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isAuthenticated) {
-      next()
-      return
+    const hasStartedAuthentication = await store.getters.hasStartedAuthentication
+    if (!hasStartedAuthentication) {
+      await store.dispatch('startAuthentication')
+    } else {
+      const isAuthenticated = await store.getters.isAuthenticated
+      if (!isAuthenticated) {
+        next({ name: 'auth' })
+      } else {
+        next()
+      }
     }
-    next({ name: 'auth' })
   } else {
     next()
   }

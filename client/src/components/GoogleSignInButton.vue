@@ -14,16 +14,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-
-const asyncGApiLoad = async () => {
-  if (window.gapi) {
-    return new Promise((resolve, reject) => {
-      window.gapi.load('client:auth2', { callback: resolve, onerror: reject })
-    })
-  } else {
-    return Promise.reject(new Error('Google API not available for load'))
-  }
-}
+import { asyncGApiLoad, asyncGApiInit } from '@/services/GApi'
 
 export default {
   name: 'GoogleSignInButton',
@@ -46,9 +37,7 @@ export default {
       await asyncGApiLoad()
 
       // Init auth instance
-      const googleAuth = await window.gapi.auth2.init({
-        client_id: process.env.VUE_APP_GOOGLE_CLIENT_ID
-      })
+      const googleAuth = await asyncGApiInit()
 
       // Attach handler to button
       googleAuth.attachClickHandler(this.$refs['sign-in'], {},
@@ -63,7 +52,12 @@ export default {
 
       // If user is already logged in
       if (googleAuth.isSignedIn.get()) {
-        this.logIn(googleAuth.currentUser.get())
+        const user = await googleAuth.currentUser.get()
+        this.logIn({
+          name: user.getBasicProfile().getGivenName(),
+          imageUrl: user.getBasicProfile().getImageUrl()
+        })
+        this.$router.push({ name: 'flags' })
       }
     } catch (error) {
       this.error = error
